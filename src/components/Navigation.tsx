@@ -50,6 +50,9 @@ export const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-controls="primary-mobile-menu"
+                aria-expanded={isMenuOpen}
+                aria-label="Toggle navigation"
                 className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary transition-smooth"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

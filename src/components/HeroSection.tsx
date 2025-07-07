@@ -7,7 +7,8 @@ export const HeroSection = () => {
       {/* Badge */}
       <div className="mb-6">
         <span className="inline-flex items-center px-4 py-1 rounded-full bg-blue-100 text-sm font-medium text-blue-700 shadow">
-          <span className="mr-2">🤖</span>
+-          <span className="mr-2">🤖</span>
++          <span className="mr-2" aria-hidden="true">🤖</span>
           AI-Powered
           <span className="ml-2 px-2 py-0.5 rounded bg-blue-200 text-blue-800 font-semibold">Validation</span>
         </span>
@@ -15,7 +16,7 @@ export const HeroSection = () => {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Headline */}
-        <h1 className="text-[72px] text-gray-900 mb-8 leading-tight font-prompt font-extrabold">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] text-gray-900 mb-8 leading-tight font-prompt font-extrabold">
           Know Before You Build.<br />Stop Guessing. Start Validating.
         </h1>
 
