@@ -53,38 +53,38 @@ export const UseCasesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {useCases.map((useCase, index) => (
             <Card 
               key={index} 
-              className="group relative overflow-hidden hover-scale transition-spring shadow-soft hover:shadow-medium border-border/50"
+              className="group relative overflow-hidden hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-2xl bg-gradient-card"
             >
-              <CardHeader className="relative">
-                <div className="flex items-center justify-between mb-2">
+              <CardHeader className="relative pb-4">
+                <div className="flex items-center justify-between mb-4">
                   <Badge 
                     variant="secondary" 
-                    className="bg-gradient-primary text-primary-foreground"
+                    className="bg-gradient-multi text-primary-foreground font-semibold px-3 py-1 rounded-full"
                   >
                     {useCase.badge}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth">
+                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth font-bold">
                   {useCase.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground">
+                <CardDescription className="text-muted-foreground text-base">
                   {useCase.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-foreground mb-3">Example Applications:</h4>
-                  <ul className="space-y-1">
+                <div className="space-y-3">
+                  <h4 className="text-sm font-bold text-foreground mb-4">Example Applications:</h4>
+                  <ul className="space-y-2">
                     {useCase.examples.map((example, exampleIndex) => (
                       <li 
                         key={exampleIndex} 
                         className="text-sm text-muted-foreground flex items-center"
                       >
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2"></div>
+                        <div className="w-2 h-2 bg-gradient-primary rounded-full mr-3 flex-shrink-0"></div>
                         {example}
                       </li>
                     ))}

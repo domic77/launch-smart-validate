@@ -3,57 +3,62 @@ import { ArrowRight, Play } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero pt-20 pb-16 lg:pt-24 lg:pb-20">
-      {/* Background decorative elements */}
+    <section className="relative overflow-hidden bg-gradient-hero-enhanced pt-24 pb-20 lg:pt-28 lg:pb-24">
+      {/* Enhanced Background decorative elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-light/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-light/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-primary/5 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+          {/* Enhanced Main Headline */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight">
             Validate Your Startup Idea.{" "}
-            <span className="text-gradient">Before You Build.</span>
+            <span className="text-gradient-multi">Before You Build.</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed">
+          {/* Enhanced Subheadline */}
+          <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-10 max-w-5xl mx-auto leading-relaxed font-medium">
             iValidate uses AI to analyze social media conversations, market trends, and user feedback 
             to help you validate your startup idea with real data — in real time.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          {/* Enhanced CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <Button 
               size="lg" 
-              className="bg-gradient-primary text-primary-foreground hover-scale shadow-medium text-lg px-8 py-4"
+              className="bg-gradient-multi text-primary-foreground btn-micro shadow-elevation text-xl px-10 py-5 rounded-2xl font-semibold"
             >
               Start Validating Free
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-3 h-6 w-6" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="text-primary border-primary hover:bg-primary/5 text-lg px-8 py-4"
+              className="text-primary border-primary/30 hover:bg-primary/5 hover:border-primary text-xl px-10 py-5 rounded-2xl font-semibold btn-micro shadow-card hover:shadow-card-hover"
             >
-              <Play className="mr-2 h-5 w-5" />
+              <Play className="mr-3 h-6 w-6" />
               See How It Works
             </Button>
           </div>
 
-          {/* Hero Illustration Placeholder */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="aspect-video bg-gradient-subtle rounded-2xl shadow-strong border border-border/20 overflow-hidden">
-              <div className="w-full h-full bg-gradient-primary/5 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="w-12 h-12 bg-primary/40 rounded-full flex items-center justify-center">
-                      <div className="w-6 h-6 bg-primary rounded-full animate-pulse"></div>
+          {/* Enhanced Hero Illustration */}
+          <div className="relative max-w-5xl mx-auto">
+            <div className="aspect-video bg-gradient-card rounded-3xl shadow-elevation border border-border/30 overflow-hidden hover-elevate transition-spring">
+              <div className="w-full h-full bg-gradient-multi/5 flex items-center justify-center relative">
+                <div className="text-center z-10">
+                  <div className="w-32 h-32 bg-gradient-multi/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-card">
+                    <div className="w-20 h-20 bg-gradient-multi/40 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gradient-multi rounded-full animate-pulse shadow-soft"></div>
                     </div>
                   </div>
-                  <p className="text-muted-foreground font-medium">AI-Powered Validation Dashboard</p>
+                  <p className="text-muted-foreground font-semibold text-lg">AI-Powered Validation Dashboard</p>
                 </div>
+                {/* Abstract geometric elements */}
+                <div className="absolute top-4 left-4 w-8 h-8 bg-primary/10 rounded-lg rotate-12 animate-pulse"></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 bg-primary-light/15 rounded-full animate-bounce"></div>
+                <div className="absolute top-1/3 right-8 w-4 h-4 bg-primary/20 rotate-45"></div>
               </div>
             </div>
           </div>

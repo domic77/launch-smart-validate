@@ -40,7 +40,7 @@ export const HowItWorksSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {steps.map((step, index) => (
             <div key={index} className="relative">
               {/* Connector Line */}
@@ -48,17 +48,17 @@ export const HowItWorksSection = () => {
                 <div className="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-primary/10 transform -translate-y-1/2 z-0"></div>
               )}
 
-              <Card className="relative z-10 text-center hover-scale transition-spring shadow-soft hover:shadow-medium border-border/50">
-                <CardHeader>
-                  <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-medium`}>
-                    <span className="text-2xl font-bold text-white">{step.number}</span>
+              <Card className="relative z-10 text-center hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-2xl bg-gradient-card">
+                <CardHeader className="pb-4">
+                  <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-card`}>
+                    <span className="text-3xl font-bold text-white">{step.number}</span>
                   </div>
-                  <CardTitle className="text-xl text-foreground">
+                  <CardTitle className="text-xl text-foreground font-bold">
                     {step.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-foreground">
+                  <CardDescription className="text-muted-foreground text-base leading-relaxed">
                     {step.description}
                   </CardDescription>
                 </CardContent>

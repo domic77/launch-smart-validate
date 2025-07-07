@@ -6,17 +6,17 @@ export const PlatformsBanner = () => {
   ];
 
   return (
-    <section className="py-4 bg-gradient-primary overflow-hidden">
+    <section className="py-6 bg-gradient-multi overflow-hidden shadow-card">
       <div className="relative">
         <div className="flex items-center">
-          <div className="flex items-center space-x-8 scroll-animation whitespace-nowrap">
-            <span className="text-primary-foreground font-semibold text-sm uppercase tracking-wider">
+          <div className="flex items-center space-x-12 scroll-animation-fast whitespace-nowrap">
+            <span className="text-primary-foreground font-bold text-base uppercase tracking-wider">
               INTEGRATED ACROSS:
             </span>
             {platforms.map((platform, index) => (
               <span 
                 key={index} 
-                className="text-primary-foreground/90 text-sm font-medium"
+                className="text-primary-foreground/95 text-base font-semibold"
               >
                 {platform}
               </span>
@@ -25,7 +25,7 @@ export const PlatformsBanner = () => {
             {platforms.map((platform, index) => (
               <span 
                 key={`duplicate-${index}`} 
-                className="text-primary-foreground/90 text-sm font-medium"
+                className="text-primary-foreground/95 text-base font-semibold"
               >
                 {platform}
               </span>
