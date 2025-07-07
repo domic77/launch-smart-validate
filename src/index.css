@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -136,6 +138,21 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .floating-nav-container {
+    @apply fixed top-4 left-0 right-0 z-50 flex justify-center px-4;
+  }
+
+  .floating-nav {
+    @apply w-full max-w-screen-xl rounded-full bg-background/80 backdrop-blur-lg shadow-lg ring-1 ring-border/50; /* Removed bg-red-500 */
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .floating-nav:hover {
+    @apply shadow-xl ring-border;
   }
 }
 
