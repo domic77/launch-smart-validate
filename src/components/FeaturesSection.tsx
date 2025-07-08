@@ -47,9 +47,9 @@ export const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Powerful Features for <span className="text-gradient">Smart Validation</span>
+            Powerful Features for <span className="text-gradient-blue-teal">Smart Validation</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground max-w-2xl mx-auto">
             Everything you need to validate your startup idea with confidence and data-driven insights.
           </p>
         </div>
@@ -58,10 +58,10 @@ export const FeaturesSection = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="group hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-2xl bg-gradient-card"
+              className="group hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-[24px] bg-gradient-card"
             >
               <CardHeader className="pb-4">
-                <div className="w-14 h-14 bg-gradient-multi rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-spring shadow-card">
+                <div className="w-14 h-14 bg-gradient-blue-teal rounded-[24px] flex items-center justify-center mb-6 group-hover:scale-110 transition-spring shadow-card">
                   <feature.icon className="h-7 w-7 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth font-bold">
@@ -69,7 +69,7 @@ export const FeaturesSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-muted-foreground text-base leading-relaxed">
+                <CardDescription className="text-foreground text-base leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>

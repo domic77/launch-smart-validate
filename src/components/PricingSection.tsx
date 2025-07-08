@@ -64,76 +64,52 @@ export const PricingSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Simple, <span className="text-gradient">Transparent Pricing</span>
+            Simple, Transparent <span className="text-gradient-blue-teal">Pricing</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground max-w-2xl mx-auto">
             Choose the plan that fits your validation needs. All plans include a 14-day free trial.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pricingPlans.map((plan, index) => (
             <Card 
-              key={index} 
-              className={`relative overflow-hidden hover-scale transition-spring ${
-                plan.popular 
-                  ? 'shadow-strong border-primary/20 scale-105' 
-                  : 'shadow-soft hover:shadow-medium border-border/50'
+              key={index}
+              className={`relative overflow-hidden hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-[24px] ${
+                plan.popular ? 'border-2 border-primary' : ''
               }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 left-0 right-0">
-                  <div className="bg-gradient-primary text-center py-2">
-                    <Badge variant="secondary" className="bg-primary-foreground text-primary font-semibold">
-                      Most Popular
-                    </Badge>
-                  </div>
-                </div>
+                <Badge className="absolute top-6 right-6 bg-gradient-blue-teal text-primary-foreground rounded-full">
+                  Most Popular
+                </Badge>
               )}
-
-              <CardHeader className={plan.popular ? 'pt-12' : ''}>
-                <CardTitle className="text-2xl text-foreground text-center">
-                  {plan.name}
-                </CardTitle>
-                <div className="text-center">
-                  <span className="text-4xl font-bold text-gradient">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                <div className="mt-2">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className="text-foreground">{plan.period}</span>
                 </div>
-                <CardDescription className="text-center text-muted-foreground">
-                  {plan.description}
-                </CardDescription>
+                <CardDescription className="mt-3 text-foreground">{plan.description}</CardDescription>
               </CardHeader>
-
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm">
-                      <Check className="h-4 w-4 text-primary mr-3 flex-shrink-0" />
-                      <span className="text-muted-foreground">{feature}</span>
+              <CardContent>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center">
+                      <Check className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
-
                 <Button 
-                  className={`w-full ${
-                    plan.popular 
-                      ? 'bg-gradient-primary text-primary-foreground hover-scale shadow-medium' 
-                      : 'border-primary text-primary hover:bg-primary/5'
-                  }`}
+                  className={`w-full rounded-[24px] ${plan.popular ? 'bg-gradient-blue-teal text-primary-foreground' : ''}`}
                   variant={plan.popular ? 'default' : 'outline'}
-                  size="lg"
                 >
                   {plan.cta}
                 </Button>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground">
-            All plans include a 14-day free trial. No credit card required. Cancel anytime.
-          </p>
         </div>
       </div>
     </section>

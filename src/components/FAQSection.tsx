@@ -46,9 +46,9 @@ export const FAQSection = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Frequently Asked <span className="text-gradient">Questions</span>
+            Frequently Asked <span className="text-gradient-blue-teal">Questions</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground">
             Everything you need to know about iValidate and startup idea validation.
           </p>
         </div>
@@ -58,26 +58,18 @@ export const FAQSection = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-background border border-border/50 rounded-lg px-6 shadow-soft hover:shadow-medium transition-smooth"
+              className="bg-background border border-border/50 rounded-[24px] px-6 shadow-soft hover:shadow-medium transition-smooth"
             >
               <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-6">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+              <AccordionContent className="text-foreground pb-6 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Still have questions? We're here to help.
-          </p>
-          <button className="text-primary hover:text-primary-dark font-medium transition-smooth">
-            Contact our support team →
-          </button>
-        </div>
       </div>
     </section>
   );
