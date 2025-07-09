@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "@motionone/react";
 import { animate } from "@motionone/dom";
 import { useEffect, useRef, useState } from "react";
+import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
 
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,7 +69,7 @@ export const HeroSection = () => {
       <div className="container relative">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-full border px-4 py-1.5 mb-8">
+          <div className="inline-flex items-center rounded-[16px] border border-border/40 bg-background/60 backdrop-blur-sm px-4 py-1.5 mb-8">
             <span className="text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
             <div className="mx-2 h-3 w-px bg-border" />
             <span className="text-sm text-foreground">Save Time & Cost</span>
@@ -106,9 +107,13 @@ export const HeroSection = () => {
           </p>
 
           <div className="mt-10 flex items-center justify-center">
-            <Button size="lg" className="h-12 px-8 bg-gradient-blue-teal text-primary-foreground shadow-card hover:shadow-card-hover rounded-[24px]">
-              Get Started
-            </Button>
+            <ButtonWithMovingBorder 
+              borderRadius="1rem" 
+              className="h-12 px-6 text-foreground font-medium"
+              borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+            >
+              Start Validating Now
+            </ButtonWithMovingBorder>
           </div>
         </div>
       </div>

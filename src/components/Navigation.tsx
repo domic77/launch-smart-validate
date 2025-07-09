@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCtaHovered, setIsCtaHovered] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +24,20 @@ export const Navigation = () => {
     };
   }, []);
 
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsCtaHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsCtaHovered(false);
+    }, 200); // Add delay to prevent menu from closing too quickly
+  };
+
   const navigationItems = [
     { label: "How It Works", href: "#how-it-works" },
     { label: "Why?", href: "#why" },
@@ -35,7 +52,7 @@ export const Navigation = () => {
         <div className="w-[95%] max-w-[1200px] mx-auto">
           {/* Single navbar that changes appearance on scroll */}
           <nav className={`w-full px-4 sm:px-6 lg:px-8 py-3 transition-all duration-300 ease-in-out ${
-            isScrolled ? 'rounded-[24px] border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : ''
+            isScrolled ? 'rounded-[16px] border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : ''
           }`}>
             <div className="flex items-center justify-between">
               {/* Logo */}
@@ -58,14 +75,36 @@ export const Navigation = () => {
                 </div>
               </div>
 
-              {/* Desktop Actions */}
-              <div className="hidden lg:flex items-center space-x-3 md:space-x-6">
-                <Button variant="ghost" className="text-foreground hover:text-primary font-medium font-prompt">
-                  Sign In
-                </Button>
-                <Button className="bg-gradient-blue-teal text-primary-foreground btn-micro shadow-card hover:shadow-card-hover font-semibold px-4 md:px-6 py-2 rounded-[24px] font-prompt">
-                  Get Started
-                </Button>
+              {/* Desktop Actions - Dropdown CTA */}
+              <div className="hidden lg:block relative">
+                <div 
+                  className="relative"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <ButtonWithMovingBorder 
+                    borderRadius="1rem" 
+                    className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1"
+                    borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+                  >
+                    Start for Free
+                    <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
+                  </ButtonWithMovingBorder>
+                  
+                  {/* Dropdown menu */}
+                  <div 
+                    className={`absolute right-0 mt-2 min-w-full overflow-hidden transition-all duration-300 origin-top-right bg-background/95 backdrop-blur-sm border rounded-[16px] ${
+                      isCtaHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                    }`}
+                  >
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-start font-medium px-4 py-3 rounded-none hover:bg-accent/30"
+                    >
+                      Sign In
+                    </Button>
+                  </div>
+                </div>
               </div>
 
               {/* Mobile Menu Button */}
@@ -83,12 +122,12 @@ export const Navigation = () => {
             {/* Mobile Navigation */}
             {isMenuOpen && (
               <div className="lg:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-glass border-t border-border/20 mt-2 rounded-[24px]">
+                <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-glass border-t border-border/20 mt-2 rounded-[16px]">
                   {navigationItems.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
-                      className="block px-4 py-3 text-base font-medium text-foreground hover:text-primary transition-smooth rounded-[24px] hover:bg-accent/50"
+                      className="block px-4 py-3 text-base font-medium text-foreground hover:text-primary transition-smooth rounded-[16px] hover:bg-accent/50"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
@@ -98,9 +137,12 @@ export const Navigation = () => {
                     <Button variant="ghost" className="w-full justify-start font-medium">
                       Sign In
                     </Button>
-                    <Button className="w-full bg-gradient-blue-teal text-primary-foreground font-semibold rounded-[24px]">
-                      Get Started
-                    </Button>
+                    <ButtonWithMovingBorder
+                      className="w-full text-foreground font-semibold py-2"
+                      borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+                    >
+                      Start for Free
+                    </ButtonWithMovingBorder>
                   </div>
                 </div>
               </div>
