@@ -1,69 +1,90 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Rocket, Search, FileText, Lightbulb } from "lucide-react";
 
 export const HowItWorksSection = () => {
   const steps = [
     {
       number: "01",
-      title: "Input Your Idea",
-      description: "Describe your startup idea in simple terms. Our AI understands context and nuance to begin comprehensive analysis.",
-      color: "from-blue-500 to-cyan-400"
+      icon: <Lightbulb size={32} className="text-primary" />,
+      title: "Describe Your Idea",
+      description:
+        "Start by sharing your startup idea in plain English. No pitch decks or jargon — just tell iValidate what you're building.",
     },
     {
-      number: "02", 
-      title: "AI Analysis",
-      description: "Our advanced AI scans social media, market trends, and competitor data across multiple platforms simultaneously.",
-      color: "from-blue-600 to-cyan-500"
+      number: "02",
+      icon: <Search size={32} className="text-primary" />,
+      title: "AI Market Sweep",
+      description:
+        "iValidate analyzes social trends, online chatter, and competitor signals — scanning platforms like X, Reddit, and many others.",
     },
     {
       number: "03",
-      title: "Generate Report",
-      description: "Receive a detailed validation report with market insights, sentiment analysis, and actionable recommendations.",
-      color: "from-blue-700 to-cyan-600"
+      icon: <FileText size={32} className="text-primary" />,
+      title: "Real-Time Validation Report",
+      description:
+        "Receive a tailored report with key insights: demand level, audience sentiment, pain point clarity, and competitor gaps.",
     },
     {
       number: "04",
-      title: "Make Decisions",
-      description: "Use data-driven insights to refine your idea, identify target markets, and make informed business decisions.",
-      color: "from-blue-800 to-cyan-700"
-    }
+      icon: <Rocket size={32} className="text-primary" />,
+      title: "Make Data-Driven Moves",
+      description:
+        "Use the results to refine, pivot, or launch with confidence — all backed by real-time, unbiased validation.",
+    },
   ];
 
   return (
-    <section id="how-it-works" className="py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            How <span className="text-gradient-blue-teal">iValidate</span> Works
-          </h2>
-          <p className="text-lg text-foreground max-w-2xl mx-auto">
-            From idea to validation in just four simple steps. Our AI does the heavy lifting so you can focus on building.
-          </p>
+    <section id="how-it-works" className="pt-20 sm:pt-32 pb-20 sm:pb-32">
+      <div className="container grid lg:grid-cols-2 lg:gap-24">
+        {/* Left Column: Sticky Header and Blank Space */}
+        <div className="lg:sticky top-0 h-full">
+          <header className="mx-auto mb-6 lg:mb-12 max-w-full text-center lg:top-[22rem] lg:text-start lg:sticky">
+            <div className="from-primary/60 to-primary mb-4 bg-linear-to-b bg-clip-text font-semibold tracking-wider text-transparent uppercase">
+              How It Works
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              How <span className="text-gradient-blue-teal">iValidate</span> Works
+            </h2>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              iValidate made startup validation simple. Just drop your idea, let our AI do the digging, and get back real, data-backed insights — so you can move smart, fast, and confident.
+            </p>
+          </header>
+          {/* Blank space for future content */}
+          <div className="hidden lg:block h-48"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Right Column: Scrolling Cards */}
+        <div className="flex w-full flex-col gap-6 lg:gap-[14rem]">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-primary/10 transform -translate-y-1/2 z-0"></div>
-              )}
-
-              <Card className="relative z-10 text-center hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-[24px] bg-gradient-card">
-                <CardHeader className="pb-4">
-                  <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-card`}>
-                    <span className="text-3xl font-bold text-white">{step.number}</span>
+            <Card
+              key={step.title}
+              className="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 group/number bg-background lg:sticky"
+              style={{ top: `${22 + index}rem` }} // Stagger the cards
+            >
+              <CardHeader className="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6">
+                <div className="flex justify-between">
+                  <div className="bg-primary/20 ring-primary/10 mb-6 size-10 rounded-full p-2 ring-8 flex items-center justify-center">
+                    {step.icon}
                   </div>
-                  <CardTitle className="text-xl text-foreground font-bold">
-                    {step.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-foreground text-base leading-relaxed">
-                    {step.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
+                  <span className="text-muted-foreground/15 group-hover/number:text-gradient-blue-teal text-5xl font-bold transition-all delay-75">
+                    {step.number}
+                  </span>
+                </div>
+                <CardTitle className="font-semibold text-lg">
+                  {step.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="px-6 text-muted-foreground">
+                {step.description}
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
