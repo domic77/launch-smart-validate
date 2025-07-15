@@ -53,7 +53,7 @@ export const HowItWorksSection = () => {
               How <span className="text-gradient-blue-teal">iValidate</span> Works
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              iValidate made startup validation simple. Just drop your idea, let our AI do the digging, and get back real, data-backed insights — so you can move smart, fast, and confident.
+              We made startup validation simple. Just drop your idea, let iValidate do the digging, and get back real, data-backed insights — so you can move smart, fast, and confident.
             </p>
           </header>
           {/* Blank space for future content */}

@@ -307,4 +307,51 @@
       transform: translateX(-50%);
     }
   }
+
+  /* Responsive Table Stacking */
+  @media (max-width: 640px) { /* Tailwind's 'sm' breakpoint is 640px */
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      border: 1px solid #bbb; /* Darker border for visibility */
+      margin-bottom: 1rem;
+      max-width: 90%; /* Reduce card size */
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 0.75rem; /* Curve edges */
+      padding: 0.5rem; /* Internal spacing */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+
+    td {
+      border: none; /* Remove all td borders */
+      position: relative;
+      padding-left: 0; /* Remove left padding */
+      text-align: center; /* Center content */
+      padding-top: 0.5rem; /* Vertical spacing */
+      padding-bottom: 0.5rem; /* Vertical spacing */
+    }
+
+    td:not(:last-child) {
+      border-bottom: 1px solid #eee; /* Re-add border only between tds, if needed for internal separation */
+    }
+
+    td:not([data-label="Key Differences"]):before {
+      content: attr(data-label);
+      display: block; /* Make label appear on its own line */
+      text-align: center; /* Center label */
+      font-weight: bold;
+      margin-bottom: 0.25rem; /* Space between label and value */
+      color: var(--muted-foreground); /* Make label less prominent */
+      font-size: 0.875rem; /* Smaller font size for label */
+    }
+  }
 }

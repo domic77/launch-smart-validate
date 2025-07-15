@@ -1,82 +1,107 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Clock, 
-  DollarSign, 
-  BarChart4, 
-  Lightbulb,
-  TrendingUp,
-  Zap
-} from "lucide-react";
+import { Clock, DollarSign, Scale, MessageSquare, BarChart2, Target, Lightbulb, Rocket } from "lucide-react";
 
 export const WhySection = () => {
-  const reasons = [
+
+  const comparisonData = [
     {
-      icon: Clock,
-      title: "Save Valuable Time",
-      description: "Reduce validation time from weeks to hours with our AI-powered platform that analyzes millions of data points instantly."
+      icon: <Clock size={20} className="text-primary" />,
+      feature: "Time to Validate",
+      self: "❌ Days or weeks",
+      others: "⚠️ Hours to days",
+      ivalidate: "✅ ⚡ Minutes — near instant",
     },
     {
-      icon: DollarSign,
-      title: "Reduce Costs",
-      description: "Avoid expensive development of ideas that won't succeed. Validate before you build to save thousands in development costs."
+      icon: <DollarSign size={20} className="text-primary" />,
+      feature: "Cost",
+      self: "❌ High (opportunity cost)",
+      others: "❌ High (freelancers, agencies)",
+      ivalidate: "✅ Low (subscription)",
     },
     {
-      icon: BarChart4,
-      title: "Data-Driven Decisions",
-      description: "Replace guesswork with concrete data from social media, market trends, and consumer behavior analysis."
+      icon: <Scale size={20} className="text-primary" />,
+      feature: "Bias-Free Results",
+      self: "❌ Prone to bias",
+      others: "⚠️ Can be biased",
+      ivalidate: "✅ Data-driven, unbiased",
     },
     {
-      icon: Lightbulb,
-      title: "Refine Your Concept",
-      description: "Get actionable insights to improve your idea before launch, increasing your chances of market success."
+      icon: <MessageSquare size={20} className="text-primary" />,
+      feature: "Social Media Integration",
+      self: "❌ Manual digging",
+      others: "⚠️ Limited or generic",
+      ivalidate: "✅ Pulls live signals from platforms like X, Reddit, and many others.",
     },
     {
-      icon: TrendingUp,
-      title: "Identify Market Gaps",
-      description: "Discover untapped opportunities and position your product to fill existing market needs."
+      icon: <BarChart2 size={20} className="text-primary" />,
+      feature: "Real-Time Reports",
+      self: "❌ No",
+      others: "⚠️ Varies",
+      ivalidate: "✅ Yes",
     },
     {
-      icon: Zap,
-      title: "Competitive Edge",
-      description: "Launch with confidence knowing your idea has been thoroughly validated against market demands."
-    }
+      icon: <Target size={20} className="text-primary" />,
+      feature: "Competitor Analysis",
+      self: "❌ Manual, basic",
+      others: "⚠️ Limited",
+      ivalidate: "✅ In-depth, automated",
+    },
+    {
+      icon: <Lightbulb size={20} className="text-primary" />,
+      feature: "Actionable Insights",
+      self: "❌ Subjective",
+      others: "⚠️ Often generic",
+      ivalidate: "✅ Specific, data-backed",
+    },
+    {
+      icon: <Rocket size={20} className="text-primary" />,
+      feature: "Built for Startups",
+      self: "✅ Yes",
+      others: "❌ No",
+      ivalidate: "✅ Yes",
+    },
   ];
 
   return (
     <section id="why" className="py-16 lg:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Why Choose <span className="text-gradient-blue-teal">iValidate</span>?
+            Why choose <span className="text-gradient-blue-teal">iValidate</span> over other options?
           </h2>
-          <p className="text-lg text-foreground max-w-2xl mx-auto">
-            Stop wasting resources on unvalidated ideas. Here's why entrepreneurs and businesses trust our platform.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Not all validation methods are equal. Whether you’re going solo or hiring help, here’s how <span className="font-bold">iValidate</span> delivers smarter, faster results — without the guesswork.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {reasons.map((reason, index) => (
-            <Card 
-              key={index} 
-              className="group hover-elevate transition-spring shadow-card hover:shadow-card-hover border-border/50 rounded-[24px] bg-gradient-card"
-            >
-              <CardHeader className="pb-4">
-                <div className="w-14 h-14 bg-gradient-blue-teal rounded-[24px] flex items-center justify-center mb-6 group-hover:scale-110 transition-spring shadow-card">
-                  <reason.icon className="h-7 w-7 text-primary-foreground" />
-                </div>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth font-bold">
-                  {reason.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-foreground text-base leading-relaxed">
-                  {reason.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+        
+
+        <div className="block">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Key Differences</th>
+                <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Self-Validation</th>
+                <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Others</th>
+                <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 rounded-t-lg">iValidate <span className="ml-2 text-xs font-normal px-2 py-1 bg-blue-500 text-white rounded-full">Recommended</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonData.map((row, index) => (
+                <tr key={index} className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                  <td className="p-4 text-foreground font-medium flex items-center gap-2" data-label="Key Differences">{row.icon} {row.feature}</td>
+                  <td className="p-4 text-muted-foreground" data-label="Self-Validation">{row.self}</td>
+                  <td className="p-4 text-muted-foreground" data-label="Others">{row.others}</td>
+                  <td className="p-4 text-foreground font-semibold bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900" data-label="iValidate">{row.ivalidate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center mt-8">
+            Only <span className="font-bold">iValidate</span> reads the room — by tapping into where real users talk about real problems. Backed by social signals. Because opinions are cool, but actual user behavior is better.
+          </p>
       </div>
     </section>
   );
-}; 
+};
