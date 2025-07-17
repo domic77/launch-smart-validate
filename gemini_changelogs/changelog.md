@@ -1,1 +1,11 @@
+- Replicated the exact sticky scrolling and staggered card layout from the 'How It Works' section into the 'Who iValidate Helps' section.
+- Removed card-like styling from the text blocks in the 'Who iValidate Helps' section, making them appear as plain text content within the scrollable area.
+- Implemented a refined sticky scrolling effect in the 'Who iValidate Helps' section: the entire section becomes sticky, the image remains fixed, and the text content scrolls independently within its column, with the image changing based on the visible text.
+- Further refined the staggered sticky scrolling effect in the 'Who iValidate Helps' section to more closely match the 'How It Works' section's behavior.
+- Implemented a staggered sticky scrolling effect in the 'Who iValidate Helps' section, mirroring the behavior of the 'How It Works' section.
+- Redesigned the 'Who iValidate Helps' section to be a dynamic, two-column layout with a sticky, scroll-activated image that changes with the text content.
+- Added audience type labels to each card in the 'Who iValidate Helps' section.
+- Applied a blue-teal gradient to the "iValidate" text in the Use Cases section title.
+- Modified the Use Cases section to target three new audiences, updated the title and subtext, and added new icons and a responsive layout.
+- Swapped the position of the UseCases and Features sections on the main page.
 - Corrected: Ensured "iValidate" is bolded in the subtext below the header in `src/components/WhySection.tsx`.
