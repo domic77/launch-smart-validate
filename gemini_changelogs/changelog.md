@@ -1,7 +1,17 @@
+- Added a hover effect to the feature grid lines, making them turn blue when the user hovers over the grid.
+- Added a subtle color change on hover to the icons and titles of the feature cards in the Features section.
+- Applied a blue-teal text gradient to "iValidate’s" in the Features section title.
+- Updated the content of the Features section with new titles, descriptions, icons, header, subtext, and closing subtext, while maintaining the existing layout and structure.
+- Updated the content of the Features section with new titles, descriptions, icons, header, subtext, and closing subtext, while maintaining the existing layout and structure.
+- Updated the content of the Features section, including header, subtext, feature card titles, descriptions, icons, and added a new closing subtext, while maintaining the existing layout and structure.
+- Restored the horizontal separator line in the Features section grid to complete the intended design.
+- Removed top and bottom borders from the Features section grid, leaving only vertical separators on larger screens.
+- Corrected the line-separated grid design in the Features section to properly place borders between items.
+- Replaced the existing Features section with a new, modern, and responsive 2x4 grid layout, ensuring uniform card size and clean design.
 - Replicated the exact sticky scrolling and staggered card layout from the 'How It Works' section into the 'Who iValidate Helps' section.
 - Removed card-like styling from the text blocks in the 'Who iValidate Helps' section, making them appear as plain text content within the scrollable area.
 - Implemented a refined sticky scrolling effect in the 'Who iValidate Helps' section: the entire section becomes sticky, the image remains fixed, and the text content scrolls independently within its column, with the image changing based on the visible text.
-- Further refined the staggered sticky scrolling effect in the 'Who iValidate Helps' section to more closely match the 'How It Works' section's behavior.
+- Further refined the staggered sticky scrolling effect in the 'Who It Works' section to more closely match the 'How It Works' section's behavior.
 - Implemented a staggered sticky scrolling effect in the 'Who iValidate Helps' section, mirroring the behavior of the 'How It Works' section.
 - Redesigned the 'Who iValidate Helps' section to be a dynamic, two-column layout with a sticky, scroll-activated image that changes with the text content.
 - Added audience type labels to each card in the 'Who iValidate Helps' section.
