@@ -8,37 +8,25 @@ import {
 export const FAQSection = () => {
   const faqs = [
     {
-      question: "How accurate is iValidate's AI analysis?",
-      answer: "Our AI achieves 90%+ accuracy by analyzing millions of data points across social media platforms, market trends, and consumer behavior patterns. We continuously train our models with fresh data to maintain high precision."
+      question: "What exactly is iValidate?",
+      answer: "iValidate is an AI-powered tool that helps you validate startup ideas fast—using real-time data, trends, and feedback from platforms like Reddit, X, and Google."
     },
     {
-      question: "Which social media platforms does iValidate analyze?",
-      answer: "We analyze data from Twitter/X, LinkedIn, Facebook, Instagram, TikTok, Reddit, YouTube, Discord, Telegram, Pinterest, Snapchat, Clubhouse, Threads, and more. Our platform continuously expands to include emerging social platforms."
+      question: "How is this different from just doing manual research?",
+      answer: "Manual research can take hours and still miss the mark. iValidate gives you actionable insights in minutes, based on live signals and data."
     },
     {
-      question: "How long does it take to get validation results?",
-      answer: "Most validation reports are generated within 15-30 minutes. Enterprise-level analysis with custom parameters may take up to 2 hours. You'll receive real-time updates during the analysis process."
+      question: "Do I need technical skills to use iValidate?",
+      answer: "Nope! iValidate is built for non-techies, founders, solo builders, and creators. Just enter your idea, and let the system handle the rest."
     },
     {
-      question: "Can I validate multiple ideas simultaneously?",
-      answer: "Yes! Depending on your plan, you can run multiple validations in parallel. Professional plans allow up to 5 simultaneous validations, while Enterprise plans offer unlimited concurrent analysis."
+      question: "Can I validate more than one idea?",
+      answer: "Yes! Depending on your plan, you can validate multiple ideas and get separate reports and scores for each one."
     },
     {
-      question: "What type of data do you collect and analyze?",
-      answer: "We analyze publicly available social media conversations, market trends, competitor mentions, sentiment data, and engagement patterns. We never collect or store personal user information and comply with all data privacy regulations."
+      question: "How accurate is the validation?",
+      answer: "iValidate combines AI, human behavior signals, and trend data to give you a strong indication of product demand, competition, and fit—but as with all tools, it’s a powerful guide, not a crystal ball."
     },
-    {
-      question: "Is there a free trial available?",
-      answer: "Yes! All plans include a 14-day free trial with full access to features. No credit card required to start, and you can cancel anytime during the trial period."
-    },
-    {
-      question: "How do I interpret the validation reports?",
-      answer: "Our reports include clear visualizations, actionable insights, and specific recommendations. We also provide detailed explanations for each metric and offer optional consultation sessions for Enterprise customers."
-    },
-    {
-      question: "Can iValidate help with idea refinement?",
-      answer: "Absolutely! Our AI doesn't just validate your original idea—it suggests improvements, identifies market gaps, and recommends positioning strategies based on the analysis results."
-    }
   ];
 
   return (
@@ -58,9 +46,9 @@ export const FAQSection = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-background border border-border/50 rounded-[24px] px-6 shadow-soft hover:shadow-medium transition-smooth"
+              className="rounded-xl border bg-card px-6"
             >
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-6">
+              <AccordionTrigger className="text-left font-semibold py-6">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-foreground pb-6 leading-relaxed">
