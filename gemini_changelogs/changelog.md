@@ -1,3 +1,20 @@
+- Fixed "currentMergedPlan is not defined" error in `src/components/PricingSection.tsx` by reordering variable declarations.
+- Fixed "Invalid DOM property `class`" error by replacing `class=` with `className=` in `src/components/PricingSection.tsx`.
+- Removed duplicate import for `Button` in `src/components/PricingSection.tsx`.
+- Merged 'One-Time Validation' and 'Starter' plans into a single dynamic card with a toggle switch in the Pricing section, and adjusted the grid layout to `lg:grid-cols-3`.
+- Optimized pricing card layout for four cards, adding a new 'One-Time Validation' card before the 'Starter' card and adjusting the grid to `md:grid-cols-2 lg:grid-cols-4`.
+- Increased top padding of the Pricing section to move the title further down from the navigation bar.
+- Updated the subtext in the Pricing section to match provided styling and ensured the title is stacked 3x.
+- Implemented new header design in Pricing section with `h1` tag, specific Tailwind classes, and `span` for title styling.
+- Adjusted spacing in the Pricing section: increased top padding and improved line spacing for the title.
+- Added a new left-aligned section title and subtext to the Pricing section.
+- Fixed syntax error in `src/components/PricingSection.tsx` by correctly wrapping the `Navigation` component and `section` in a React Fragment.
+- Added `Navigation` component to `src/components/PricingSection.tsx` to allow users to navigate back.
+- Removed `PricingSection` component from `src/pages/Index.tsx` as it now has its own dedicated route.
+- Implemented client-side routing for the pricing section:
+  - Wrapped `App` component with `BrowserRouter` in `src/main.tsx`.
+  - Defined `/pricing` route in `src/App.tsx` to render `PricingSection`.
+  - Updated `src/components/Navigation.tsx` to use `Link` component for pricing navigation.
 - Added a hover effect to the feature grid lines, making them turn blue when the user hovers over the grid.
 - Added a subtle color change on hover to the icons and titles of the feature cards in the Features section.
 - Applied a blue-teal text gradient to "iValidate’s" in the Features section title.
