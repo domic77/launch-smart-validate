@@ -8,6 +8,7 @@ import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import { TestimonialSection } from "@/components/TestimonialSection";
 import { Footer } from "@/components/Footer";
+import { ClosingCTA } from "@/components/ClosingCTA";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <FeaturesSection />
       <TestimonialSection />
       <FAQSection />
+      <ClosingCTA />
       <Footer />
     </div>
   );

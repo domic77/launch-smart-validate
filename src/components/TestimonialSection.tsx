@@ -11,12 +11,12 @@ interface TestimonialProps {
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ quote, caption, author }) => {
   return (
-    <div className="rounded-xl border bg-card text-card-foreground p-6 text-center flex flex-col h-full transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700">
-      <p className="text-lg italic text-gray-700 dark:text-gray-300 mb-4 flex-grow">"{quote}"</p>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{caption}</p>
+    <div className="rounded-xl border bg-card text-card-foreground p-6 text-center flex flex-col h-full transition-colors duration-200 hover:bg-muted">
+      <p className="text-lg italic text-muted-foreground mb-4 flex-grow">"{quote}"</p>
+      <p className="text-sm text-muted-foreground mb-2">{caption}</p>
       <div className="flex items-center justify-center mt-2">
-        <User className="h-5 w-5 mr-2 text-gray-600 dark:text-gray-400" />
-        <p className="font-bold text-gray-900 dark:text-white">{author}</p>
+        <User className="h-5 w-5 mr-2 text-muted-foreground" />
+        <p className="font-bold text-foreground">{author}</p>
       </div>
     </div>
   );
@@ -52,13 +52,13 @@ export const TestimonialSection = () => {
   }, [emblaApi]);
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white text-center mb-4"><span className="text-gradient-blue-teal">iValidate</span> Through the Eyes of Early Testers</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-12">
           Real feedback from early users who’ve put iValidate through its paces—shaping the future of idea validation.
         </p>
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {testimonials.map((testimonial, index) => (
@@ -69,16 +69,16 @@ export const TestimonialSection = () => {
             </div>
           </div>
           <button
-            className="absolute top-1/2 left-0 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            className="absolute top-1/2 left-0 -translate-y-1/2 bg-transparent border border-primary text-primary p-2 rounded-full shadow-md hover:bg-primary/10 transition-colors"
             onClick={scrollPrev}
           >
-            <ArrowLeft className="h-6 w-6 text-gray-800 dark:text-white" />
+            <ArrowLeft className="h-6 w-6" />
           </button>
           <button
-            className="absolute top-1/2 right-0 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            className="absolute top-1/2 right-0 -translate-y-1/2 bg-transparent border border-primary text-primary p-2 rounded-full shadow-md hover:bg-primary/10 transition-colors"
             onClick={scrollNext}
           >
-            <ArrowRight className="h-6 w-6 text-gray-800 dark:text-white" />
+            <ArrowRight className="h-6 w-6" />
           </button>
         </div>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mt-12">
