@@ -6,6 +6,11 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import Support from "./pages/Support";
+import ContactUs from "./pages/ContactUs";
+import Terms from "./pages/Terms";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { PricingSection } from "./components/PricingSection";
 
 const queryClient = new QueryClient();
@@ -32,6 +37,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pricing" element={<PricingSection />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

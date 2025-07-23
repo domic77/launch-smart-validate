@@ -47,7 +47,7 @@ export const Footer = () => {
               <ul className="space-y-3">
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Contact Us</a></li>
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Terms</a></li>
-                <li><a href="#" className="text-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="/privacy-policy" className="text-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
           </div>

@@ -29,3 +29,5 @@
 - Updated "Pricing" link in `src/components/Footer.tsx` to `href="/pricing"` to match navigation bar linking convention.
 - Replaced "About" with "Contact Us" in the Info column of `src/components/Footer.tsx`.
 - Replaced "Privacy Center" with "Privacy Policy" in the Info column of `src/components/Footer.tsx`.
+- Changed the global background color to a blue tint by modifying the `--background` variable in `src/index.css`.
+- Reverted the global background color in `src/index.css` back to white.
