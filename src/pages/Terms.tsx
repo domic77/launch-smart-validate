@@ -1,48 +1,58 @@
 import React from 'react';
-import { Footer } from "@/components/Footer";
-import { Navigation } from "@/components/Navigation";
+import { Link } from 'react-router-dom';
+import { Card, CardContent } from "@/components/ui/card";
 
 const Terms: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navigation />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-12">Terms of Service</h1>
-        <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg prose prose-lg">
-          <p><strong>Last Updated:</strong> July 22, 2025</p>
+    <div className="flex flex-col min-h-screen bg-gray-50">
+      <main className="flex-grow container mx-auto px-4 py-8 pt-8">
+        <h1 className="text-4xl font-bold text-center mb-4">Terms of Service</h1>
+        <p className="text-center text-gray-500 mb-12"><strong>Last Updated:</strong> July 22, 2025</p>
+        <Card className="max-w-2xl mx-auto rounded-2xl border bg-background prose prose-lg">
+          <CardContent className="pt-10">
 
-          <h2>1. Acceptance of Terms</h2>
-          <p>By accessing and using the iValidate platform and services (the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to all the terms and conditions of this agreement, you may not access the Service.</p>
+          <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
+          <p className="mb-4">By accessing and using iValidate ("Service"), you agree to be bound by these Terms and Conditions. If you do not agree, you must not use the Service.</p>
 
-          <h2>2. Description of Service</h2>
-          <p>iValidate provides a suite of data validation tools and services designed to ensure the accuracy, consistency, and reliability of your data. Our services include, but are not limited to, real-time validation, batch processing, and custom validation rules.</p>
+          <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
+          <p className="mb-4">iValidate is an AI-powered idea validation platform that helps startups, founders, and creators test and validate business ideas using real-time market insights, social signals, and competitor analysis. The Service includes validation tools, insight generation, downloadable reports, and connected data sources.</p>
 
-          <h2>3. User Accounts</h2>
-          <p>To access certain features of the Service, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
+          <h2 className="text-2xl font-semibold mb-4">3. User Accounts</h2>
+          <p className="mb-4">You are responsible for keeping your login credentials secure and for all activity conducted under your account. You must notify us immediately of any unauthorized use of your account.</p>
+          <h2 className="text-2xl font-semibold mb-4">4. Acceptable Use</h2>
+          <p className="mb-4"><strong className="text-gray-700">You agree not to use the Service to:</strong></p>
+          <ul className="list-disc list-inside mb-4">
+            <li>Violate any laws or third-party rights</li>
+            <li>Submit malicious, false, or misleading data</li>
+            <li>Access or scrape data not intended for your use</li>
+            <li>Interfere with system security or integrity</li>
+            <li>Reverse-engineer or copy proprietary components of iValidate</li>
+          </ul>
 
-          <h2>4. User Responsibilities</h2>
-          <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You are solely responsible for your data and your use of the Service.</p>
+          <h2 className="text-2xl font-semibold mb-4">5. Idea and Data Ownership</h2>
+          <p className="mb-4">You retain full ownership of any startup ideas or data you input into iValidate. By using the Service, you grant us a limited license to process, analyze, and display this data strictly for validation and reporting purposes.</p>
 
-          <h2>5. Intellectual Property</h2>
-          <p>All content, trademarks, service marks, trade names, logos, and intellectual property displayed on the Service are the property of iValidate or its licensors. You may not use any of these without prior written consent.</p>
+          <h2 className="text-2xl font-semibold mb-4">6. Payment and Subscription</h2>
+          <p className="mb-4">Paid plans are billed upfront either monthly or annually, based on your selection. We offer a 3-day refund policy for new users. You may cancel anytime; service will remain active until the end of your billing cycle.</p>
 
-          <h2>6. Disclaimers</h2>
-          <p>The Service is provided "as is" and "as available" without any warranties of any kind, either express or implied. iValidate does not warrant that the Service will be uninterrupted, error-free, or secure.</p>
+          <h2 className="text-2xl font-semibold mb-4">7. Limitation of Liability</h2>
+          <p className="mb-4">iValidate is not liable for any loss of business opportunity, revenue, or investment decisions made based on validation results. Our total liability shall not exceed the amount paid by you within the past 12 months.</p>
 
-          <h2>7. Limitation of Liability</h2>
-          <p>In no event shall iValidate be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
+          <h2 className="text-2xl font-semibold mb-4">8. Service Availability</h2>
+          <p className="mb-4">We aim for high availability but cannot guarantee uninterrupted access. iValidate may experience occasional downtime due to maintenance or unforeseen issues. We reserve the right to modify, suspend, or discontinue any part of the Service with reasonable notice.</p>
 
-          <h2>8. Governing Law</h2>
-          <p>These Terms shall be governed and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions.</p>
+          <h2 className="text-2xl font-semibold mb-4">9. Changes to Terms</h2>
+          <p className="mb-4">We may update these terms periodically. You will be notified of significant updates via email or an in-app message. Continued use of the Service after changes means you accept the revised Terms.</p>
 
-          <h2>9. Changes to Terms</h2>
-          <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
-
-          <h2>10. Contact Information</h2>
-          <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@ivalidate.com" className="text-blue-600 hover:underline">info@ivalidate.com</a>.</p>
+          <h2 className="text-2xl font-semibold mb-4">10. Contact Information</h2>
+          <p className="mb-4">For questions or concerns about these Terms, contact us at: <a href="mailto:support@ivalidate.xyz" className="text-blue-600 hover:underline">support@ivalidate.xyz</a></p>
+          <div className="text-center mt-8">
+            <Link to="/" className="text-blue-600 hover:underline">← Back to Home</Link>
           </div>
+          </CardContent>
+        </Card>
       </main>
-      <Footer />
+      
     </div>
   );
 };
