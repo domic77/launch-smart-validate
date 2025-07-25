@@ -12,10 +12,10 @@ export const Footer = () => {
               Your startup’s first stop for smart idea validation
             </p>
             <div className="flex space-x-6">
-              <a href="#" aria-label="Facebook"><Facebook className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="#" aria-label="Instagram"><Instagram className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="#" aria-label="Twitter"><Twitter className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="#" aria-label="LinkedIn"><Linkedin className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
+              <a href="/maintenance" aria-label="Facebook"><Facebook className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
+              <a href="/maintenance" aria-label="Instagram"><Instagram className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
+              <a href="/maintenance" aria-label="Twitter"><Twitter className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
+              <a href="/maintenance" aria-label="LinkedIn"><Linkedin className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
             </div>
           </div>
 
@@ -35,7 +35,7 @@ export const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-foreground hover:text-primary transition-colors">Free AI Tool</a></li>
+                <li><a href="/maintenance" className="text-foreground hover:text-primary transition-colors">Free AI Tool</a></li>
                 <li><a href="/blogs" className="text-foreground hover:text-primary transition-colors">Blogs</a></li>
                 <li><a href="/support" className="text-foreground hover:text-primary transition-colors">Support</a></li>
               </ul>

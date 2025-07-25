@@ -37,3 +37,7 @@
 
 - **Formatted "What We're Working On" section on Maintenance Page:**
   - `src/pages/MaintenancePage.tsx`: Changed bullet points to display in two columns.
+
+- **Redirected placeholder links to Maintenance Page:**
+  - `src/components/Footer.tsx`: Changed `href="#"` to `href="/maintenance"` for social media links and "Free AI Tool" link.
+  - `src/pages/Support.tsx`: Changed `to="#"` to `to="/maintenance"` for "Try Free Tools" button.

@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Link } from 'react-router-dom';
 
 export const ClosingCTA = () => {
   return (
@@ -17,9 +18,11 @@ export const ClosingCTA = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button size="lg">Start Validating Now</Button>
-              <Button size="lg" variant="outline">
-                Try Free AI Tool
+              <Button size="lg" asChild>
+                <Link to="/maintenance">Start Validating Now</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/maintenance">Try Free AI Tool</Link>
               </Button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">

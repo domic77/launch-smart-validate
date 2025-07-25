@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 export const PricingSection = () => {
   const [isMonthly, setIsMonthly] = useState(true);
@@ -168,16 +169,18 @@ export const PricingSection = () => {
                       <Button 
                         className={`w-full rounded-[24px] mb-4 ${(currentMergedPlan.popular) ? 'bg-gradient-blue-teal text-primary-foreground' : ''}`}
                         variant={(currentMergedPlan.popular) ? 'default' : 'outline'}
+                        asChild
                       >
-                        {currentMergedPlan.cta}
+                        <Link to="/maintenance">{currentMergedPlan.cta}</Link>
                       </Button>
                     </motion.div>
                   ) : (
                     <Button 
                       className={`w-full rounded-[24px] mb-4 ${plan.popular ? 'bg-gradient-blue-teal text-primary-foreground' : ''}`}
                       variant={plan.popular ? 'default' : 'outline'}
+                      asChild
                     >
-                      {plan.cta}
+                      <Link to="/maintenance">{plan.cta}</Link>
                     </Button>
                   )}
                   {plan.isToggle ? (

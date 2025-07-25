@@ -3,6 +3,7 @@ import { motion } from "@motionone/react";
 import { animate } from "@motionone/dom";
 import { useEffect, useRef, useState } from "react";
 import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -107,13 +108,15 @@ export const HeroSection = () => {
           </p>
 
           <div className="mt-10 flex items-center justify-center">
-            <ButtonWithMovingBorder 
-              borderRadius="1rem" 
-              className="h-12 px-6 text-foreground font-medium"
-              borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
-            >
-              Start Validating Now
-            </ButtonWithMovingBorder>
+            <Link to="/maintenance">
+              <ButtonWithMovingBorder 
+                borderRadius="1rem" 
+                className="h-12 px-6 text-foreground font-medium"
+                borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+              >
+                Start Validating Now
+              </ButtonWithMovingBorder>
+            </Link>
           </div>
         </div>
       </div>

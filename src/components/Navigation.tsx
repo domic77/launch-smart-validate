@@ -96,14 +96,16 @@ export const Navigation = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <ButtonWithMovingBorder 
-                    borderRadius="1rem" 
-                    className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1"
-                    borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
-                  >
-                    Start for Free
-                    <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
-                  </ButtonWithMovingBorder>
+                  <Link to="/maintenance">
+                    <ButtonWithMovingBorder 
+                      borderRadius="1rem" 
+                      className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1"
+                      borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+                    >
+                      Start for Free
+                      <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
+                    </ButtonWithMovingBorder>
+                  </Link>
                   
                   {/* Dropdown menu */}
                   <div 
@@ -114,8 +116,9 @@ export const Navigation = () => {
                     <Button 
                       variant="ghost" 
                       className="w-full justify-start font-medium px-4 py-3 rounded-none hover:bg-accent/30"
+                      asChild
                     >
-                      Sign In
+                      <Link to="/maintenance">Sign In</Link>
                     </Button>
                   </div>
                 </div>
@@ -159,14 +162,15 @@ export const Navigation = () => {
                     )
                   ))}
                   <div className="pt-4 space-y-3 pb-2">
-                    <Button variant="ghost" className="w-full justify-start font-medium">
-                      Sign In
+                    <Button variant="ghost" className="w-full justify-start font-medium" asChild>
+                      <Link to="/maintenance">Sign In</Link>
                     </Button>
                     <ButtonWithMovingBorder
                       className="w-full text-foreground font-semibold py-2"
                       borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
+                      asChild
                     >
-                      Start for Free
+                      <Link to="/maintenance">Start for Free</Link>
                     </ButtonWithMovingBorder>
                   </div>
                 </div>
