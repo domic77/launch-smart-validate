@@ -53,6 +53,7 @@
   - `src/components/Navigation.tsx`: Added `flex items-center` to the logo `Link` to display image and text side-by-side.
   - `src/components/Navigation.tsx`: Increased logo size to `h-10 w-10`.
   - `src/components/Navigation.tsx`: Removed right margin from logo image.
+  - `src/components/Navigation.tsx`: Applied `bg-primary`, `text-white`, `hover:bg-white`, `hover:text-primary`, `hover:border-[1.5px]`, `hover:border-blue-500/30` to "Validate Now" button.
 
 - **Global Styling:**
   - `src/index.css`: Changed `--background` variable to `0 0% 98%` (equivalent to `#fafafa`).
@@ -76,6 +77,7 @@
 
 - **Hero Section CTA Styling:**
   - `src/components/HeroSection.tsx`: Applied `bg-white`, `border-[1.5px] border-blue-500/30`, `h-10`, `px-4`, `text-foreground`, `font-medium`, `font-prompt`, `flex`, `items-center`, `gap-1` to the "Start Validating Now" button.
+  - `src/components/HeroSection.tsx`: Applied `bg-primary`, `text-white`, `hover:bg-white`, `hover:text-primary`, `hover:border-[1.5px]`, `hover:border-blue-500/30` to the "Start Validating Now" button.
 
 - **Hero Section Announcement Badge Border:**
   - `src/components/HeroSection.tsx`: Changed border width to `1.5px`.

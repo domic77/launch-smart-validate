@@ -98,7 +98,7 @@ export const Navigation = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Button 
-                    className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1 bg-white border-[1.5px] border-blue-500/30"
+                    className="h-10 px-4 text-white font-medium font-prompt flex items-center gap-1 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30"
                   >
                     <Link to="/maintenance">Validate Now</Link>
                     <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
