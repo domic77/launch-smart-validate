@@ -23,7 +23,7 @@ const supportInfo = [
     icon: Server,
     title: "Status Page",
     description: "Check if all systems are running smoothly.",
-    link: "#",
+    link: "/maintenance",
     linkText: "View Status",
   },
 ];

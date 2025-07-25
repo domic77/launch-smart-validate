@@ -24,6 +24,7 @@ import ContactUs from "./pages/ContactUs";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { PricingSection } from "./components/PricingSection";
+import MaintenancePage from "./pages/MaintenancePage";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/maintenance" element={<MaintenancePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
