@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {
@@ -54,7 +53,7 @@ export const Navigation = () => {
         <div className="w-[95%] max-w-[1200px] mx-auto">
           {/* Single navbar that changes appearance on scroll */}
           <nav className={`w-full px-4 sm:px-6 lg:px-8 py-3 transition-all duration-300 ease-in-out ${
-            isScrolled ? 'rounded-[16px] border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : ''
+            isScrolled ? 'rounded-[16px] border-[1.5px] border-blue-500/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : ''
           }`}>
             <div className="flex items-center justify-between">
               {/* Logo */}
@@ -96,27 +95,22 @@ export const Navigation = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <Link to="/maintenance">
-                    <ButtonWithMovingBorder 
-                      borderRadius="1rem" 
-                      className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1"
-                      borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
-                    >
-                      Start for Free
-                      <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
-                    </ButtonWithMovingBorder>
-                  </Link>
+                  <Button 
+                    className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1 bg-white border-[1.5px] border-blue-500/30"
+                  >
+                    <Link to="/maintenance">Validate Now</Link>
+                    <ChevronDown size={16} className={`transition-transform duration-300 ${isCtaHovered ? 'rotate-180' : ''}`} />
+                  </Button>
                   
                   {/* Dropdown menu */}
                   <div 
-                    className={`absolute right-0 mt-2 min-w-full overflow-hidden transition-all duration-300 origin-top-right bg-background/95 backdrop-blur-sm border rounded-[16px] ${
+                    className={`absolute right-0 mt-2 min-w-full overflow-hidden transition-all duration-300 origin-top-right bg-background/95 backdrop-blur-sm ${
                       isCtaHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                     }`}
                   >
                     <Button 
-                      variant="ghost" 
-                      className="w-full justify-start font-medium px-4 py-3 rounded-none hover:bg-accent/30"
-                      asChild
+                      variant="outline" 
+                      className="w-full justify-start font-medium h-10 px-4 bg-white rounded-[16px] hover:bg-gray-100 border-[1.5px] border-blue-500/30"
                     >
                       <Link to="/maintenance">Sign In</Link>
                     </Button>
@@ -162,16 +156,18 @@ export const Navigation = () => {
                     )
                   ))}
                   <div className="pt-4 space-y-3 pb-2">
-                    <Button variant="ghost" className="w-full justify-start font-medium" asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full text-foreground font-semibold py-2 bg-white border-[1.5px] border-blue-500/30 rounded-[16px]"
+                    >
                       <Link to="/maintenance">Sign In</Link>
                     </Button>
-                    <ButtonWithMovingBorder
+                    <Button
                       className="w-full text-foreground font-semibold py-2"
-                      borderClassName="bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
-                      asChild
+                      variant="ghost"
                     >
                       <Link to="/maintenance">Start for Free</Link>
-                    </ButtonWithMovingBorder>
+                    </Button>
                   </div>
                 </div>
               </div>

@@ -40,4 +40,29 @@
 
 - **Redirected placeholder links to Maintenance Page:**
   - `src/components/Footer.tsx`: Changed `href="#"` to `href="/maintenance"` for social media links and "Free AI Tool" link.
-  - `src/pages/Support.tsx`: Changed `to="#"` to `to="/maintenance"` for "Try Free Tools" button.
+  - `src/pages/Support.tsx`: Changed `to="#"` to `to="/maintenance"` for "Live Chat" and "Try Free Tools" links.
+
+- **Navbar Enhancements:**
+  - `src/components/Navigation.tsx`: Set navbar border width to `1.5px` when scrolled.
+  - `src/components/Navigation.tsx`: Changed mobile "Start for Free" CTA to a standard `Button` with `ghost` variant.
+  - `src/components/Navigation.tsx`: Changed scrolled navbar border color to `border-blue-500/30`.
+  - `src/components/Navigation.tsx`: Reverted desktop "Start for Free" CTA text color to `text-foreground`.
+  - `src/components/Navigation.tsx`: Applied `bg-white`, `h-10`, `px-4`, `border-[1.5px]`, `border-blue-500/30`, and `hover:bg-gray-100` to desktop and mobile "Sign In" buttons.
+  - `src/components/Navigation.tsx`: Applied `bg-white` and `border-[1.5px] border-blue-500/30` to desktop "Validate Now" CTA.
+
+- **Global Styling:**
+  - `src/index.css`: Changed `--background` variable to `0 0% 98%` (equivalent to `#fafafa`).
+
+- **Moving Border Button Styling:**
+  - `src/components/ui/moving-border.tsx`: Applied `1.5px` width and `border-blue-500/30` to the inner border.
+  - `src/components/ui/moving-border.tsx`: Changed inner background to `bg-white`.
+
+- **Button Component Styling Fix:**
+  - `src/components/ui/button.tsx`: Modified `cn` call to ensure `className` prop takes precedence for overriding default styles like `border-radius`.
+
+- **Resolved Nested Anchor Tags:**
+  - `src/components/HeroSection.tsx`: Removed redundant outer `Link` wrapping the `Button`.
+  - `src/components/Navigation.tsx`: Removed `asChild` from desktop and mobile "Sign In" buttons.
+  - `src/components/PricingSection.tsx`: Removed `asChild` from CTA buttons.
+  - `src/components/ClosingCTA.tsx`: Removed `asChild` from CTA buttons.
+  - `src/pages/Support.tsx`: Removed `asChild` from CTA buttons.

@@ -101,10 +101,10 @@ const Support: React.FC = () => {
           <h2 className="text-3xl font-bold mb-2">Still Need Help?</h2>
           <p className="text-muted-foreground mb-6">We’re here if you need us. Drop a message and we’ll help you figure things out fast.</p>
           <div className="flex justify-center items-center gap-4">
-            <Button asChild size="lg" className="rounded-full">
+            <Button size="lg" className="rounded-full">
               <Link to="/contact-us">Contact Support</Link>
             </Button>
-            <Button asChild variant="link" className="text-primary">
+            <Button variant="link" className="text-primary">
               <Link to="/">Back to Home</Link>
             </Button>
           </div>
@@ -113,7 +113,7 @@ const Support: React.FC = () => {
         {/* Bottom Card CTA */}
         <Card className="bg-primary/5 border-primary/20 border-[1.5px] rounded-[24px] p-8 text-center">
           <p className="max-w-xl mx-auto text-foreground mb-6">Not ready to reach out? Try our free AI tools to get a taste of how easy idea validation can be with iValidate.</p>
-          <Button asChild size="lg" className="rounded-full">
+          <Button size="lg" className="rounded-full">
             <Link to="/maintenance">Try Free Tools</Link>
           </Button>
         </Card>

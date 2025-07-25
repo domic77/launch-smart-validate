@@ -18,10 +18,10 @@ export const ClosingCTA = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button size="lg" asChild>
+              <Button size="lg">
                 <Link to="/maintenance">Start Validating Now</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline">
                 <Link to="/maintenance">Try Free AI Tool</Link>
               </Button>
             </div>

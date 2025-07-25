@@ -169,7 +169,6 @@ export const PricingSection = () => {
                       <Button 
                         className={`w-full rounded-[24px] mb-4 ${(currentMergedPlan.popular) ? 'bg-gradient-blue-teal text-primary-foreground' : ''}`}
                         variant={(currentMergedPlan.popular) ? 'default' : 'outline'}
-                        asChild
                       >
                         <Link to="/maintenance">{currentMergedPlan.cta}</Link>
                       </Button>
@@ -178,7 +177,6 @@ export const PricingSection = () => {
                     <Button 
                       className={`w-full rounded-[24px] mb-4 ${plan.popular ? 'bg-gradient-blue-teal text-primary-foreground' : ''}`}
                       variant={plan.popular ? 'default' : 'outline'}
-                      asChild
                     >
                       <Link to="/maintenance">{plan.cta}</Link>
                     </Button>
