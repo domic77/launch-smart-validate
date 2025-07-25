@@ -36,7 +36,7 @@ export const Footer = () => {
               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
               <ul className="space-y-3">
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Free AI Tool</a></li>
-                <li><a href="/blog" className="text-foreground hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="/blogs" className="text-foreground hover:text-primary transition-colors">Blogs</a></li>
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Support</a></li>
               </ul>
             </div>
