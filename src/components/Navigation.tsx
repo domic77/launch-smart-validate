@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import iValidateLogo from '@/assets/ivalidate-logos/iValidate-logo.png';
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +59,8 @@ export const Navigation = () => {
             <div className="flex items-center justify-between">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <Link to="/">
+                <Link to="/" className="flex items-center">
+                  <img src={iValidateLogo} alt="iValidate Logo" className="h-10 w-10" />
                   <h1 className="text-2xl font-bold text-gradient-blue-teal font-prompt">iValidate</h1>
                 </Link>
               </div>
@@ -109,8 +111,7 @@ export const Navigation = () => {
                     }`}
                   >
                     <Button 
-                      variant="outline" 
-                      className="w-full justify-start font-medium h-10 px-4 bg-white rounded-[16px] hover:bg-gray-100 border-[1.5px] border-blue-500/30"
+                      className="w-full justify-center font-medium h-10 px-4 bg-white rounded-[16px] hover:bg-gray-100 border-[1.5px] border-blue-500/30 text-black"
                     >
                       <Link to="/maintenance">Sign In</Link>
                     </Button>
@@ -158,7 +159,7 @@ export const Navigation = () => {
                   <div className="pt-4 space-y-3 pb-2">
                     <Button
                       variant="outline"
-                      className="w-full text-foreground font-semibold py-2 bg-white border-[1.5px] border-blue-500/30 rounded-[16px]"
+                      className="w-full text-foreground font-semibold py-2 bg-white border-[1.5px] border-blue-500/30 rounded-[16px] text-black"
                     >
                       <Link to="/maintenance">Sign In</Link>
                     </Button>

@@ -69,7 +69,7 @@ export const HeroSection = () => {
       <div className="container relative">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-[16px] border border-border/40 bg-background/60 backdrop-blur-sm px-4 py-1.5 mb-8">
+          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-4 py-1.5 mb-8">
             <span className="text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
             <div className="mx-2 h-3 w-px bg-border" />
             <span className="text-sm text-foreground">Save Time & Cost</span>
@@ -108,8 +108,7 @@ export const HeroSection = () => {
 
           <div className="mt-10 flex items-center justify-center">
             <Button 
-              className="h-12 px-6 text-foreground font-medium"
-              asChild
+              className="h-10 px-4 text-foreground font-medium font-prompt flex items-center gap-1 bg-white border-[1.5px] border-blue-500/30"
             >
               <Link to="/maintenance">Start Validating Now</Link>
             </Button>

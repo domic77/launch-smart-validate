@@ -49,6 +49,10 @@
   - `src/components/Navigation.tsx`: Reverted desktop "Start for Free" CTA text color to `text-foreground`.
   - `src/components/Navigation.tsx`: Applied `bg-white`, `h-10`, `px-4`, `border-[1.5px]`, `border-blue-500/30`, and `hover:bg-gray-100` to desktop and mobile "Sign In" buttons.
   - `src/components/Navigation.tsx`: Applied `bg-white` and `border-[1.5px] border-blue-500/30` to desktop "Validate Now" CTA.
+  - `src/components/Navigation.tsx`: Changed "Sign In" button text color to `text-black`.
+  - `src/components/Navigation.tsx`: Added `flex items-center` to the logo `Link` to display image and text side-by-side.
+  - `src/components/Navigation.tsx`: Increased logo size to `h-10 w-10`.
+  - `src/components/Navigation.tsx`: Removed right margin from logo image.
 
 - **Global Styling:**
   - `src/index.css`: Changed `--background` variable to `0 0% 98%` (equivalent to `#fafafa`).
@@ -66,3 +70,15 @@
   - `src/components/PricingSection.tsx`: Removed `asChild` from CTA buttons.
   - `src/components/ClosingCTA.tsx`: Removed `asChild` from CTA buttons.
   - `src/pages/Support.tsx`: Removed `asChild` from CTA buttons.
+
+- **Favicon Update:**
+  - `index.html`: Added `<link rel="icon">` to reference `src/assets/ivalidate-logos/ivalidate-favicon.ico`.
+
+- **Hero Section CTA Styling:**
+  - `src/components/HeroSection.tsx`: Applied `bg-white`, `border-[1.5px] border-blue-500/30`, `h-10`, `px-4`, `text-foreground`, `font-medium`, `font-prompt`, `flex`, `items-center`, `gap-1` to the "Start Validating Now" button.
+
+- **Hero Section Announcement Badge Border:**
+  - `src/components/HeroSection.tsx`: Changed border width to `1.5px`.
+
+- **Hero Section Announcement Badge Background:**
+  - `src/components/HeroSection.tsx`: Changed background to `bg-white`.
