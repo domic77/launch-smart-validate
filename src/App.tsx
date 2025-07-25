@@ -12,6 +12,14 @@ import HowIValidateHelpsYouSpotABadIdeaFast from "./pages/blogs/how-ivalidate-he
 import FromDoubtToData from "./pages/blogs/from-doubt-to-data";
 import HowIFoundMyFirstValidatedIdea from "./pages/blogs/how-i-found-my-first-validated-idea";
 import Support from "./pages/Support";
+import GettingStarted from "./pages/support/getting-started";
+import ConnectWorkspace from "./pages/support/connect-workspace";
+import AIPoweredValidation from "./pages/support/ai-powered-validation";
+import ValidationReports from "./pages/support/validation-reports";
+import ManagingWorkflows from "./pages/support/managing-workflows";
+import ValidationScore from "./pages/support/validation-score";
+import CommonErrors from "./pages/support/common-errors";
+import Billing from "./pages/support/billing";
 import ContactUs from "./pages/ContactUs";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -47,6 +55,14 @@ const App = () => {
             <Route path="/blogs/from-doubt-to-data" element={<FromDoubtToData />} />
             <Route path="/blogs/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/support/getting-started" element={<GettingStarted />} />
+            <Route path="/support/connect-workspace" element={<ConnectWorkspace />} />
+            <Route path="/support/ai-powered-validation" element={<AIPoweredValidation />} />
+            <Route path="/support/validation-reports" element={<ValidationReports />} />
+            <Route path="/support/managing-workflows" element={<ManagingWorkflows />} />
+            <Route path="/support/validation-score" element={<ValidationScore />} />
+            <Route path="/support/common-errors" element={<CommonErrors />} />
+            <Route path="/support/billing" element={<Billing />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
