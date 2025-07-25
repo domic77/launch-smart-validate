@@ -6,7 +6,11 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Blog from "./pages/Blog";
+import Blogs from "./pages/Blogs";
+import BlogPost from "./pages/BlogPost";
+import HowIValidateHelpsYouSpotABadIdeaFast from "./pages/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast";
+import FromDoubtToData from "./pages/blogs/from-doubt-to-data";
+import HowIFoundMyFirstValidatedIdea from "./pages/blogs/how-i-found-my-first-validated-idea";
 import Support from "./pages/Support";
 import ContactUs from "./pages/ContactUs";
 import Terms from "./pages/Terms";
@@ -37,7 +41,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pricing" element={<PricingSection />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:slug" element={<BlogPost />} />
+            <Route path="/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
+            <Route path="/blogs/from-doubt-to-data" element={<FromDoubtToData />} />
+            <Route path="/blogs/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />

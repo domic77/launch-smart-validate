@@ -46,6 +46,7 @@ export const Navigation = () => {
     { label: "Features", href: "/#features", type: "anchor" },
     { label: "Pricing", href: "/pricing", type: "route" },
   ];
+  
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">

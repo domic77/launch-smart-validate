@@ -26,7 +26,7 @@ export const Footer = () => {
               <h4 className="text-lg font-semibold text-foreground mb-4">Product</h4>
               <ul className="space-y-3">
                 <li><a href="#how-it-works" className="text-foreground hover:text-primary transition-colors">How it works</a></li>
-                <li><a href="#features" className="text-foreground hover:text-primary transition-colors">Features</a></li>
+                <li><a href="/features" className="text-foreground hover:text-primary transition-colors">Features</a></li>
                 <li><a href="/pricing" className="text-foreground hover:text-primary transition-colors">Pricing</a></li>
               </ul>
             </div>
@@ -36,7 +36,7 @@ export const Footer = () => {
               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
               <ul className="space-y-3">
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Free AI Tool</a></li>
-                <li><a href="#" className="text-foreground hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="/blog" className="text-foreground hover:text-primary transition-colors">Blog</a></li>
                 <li><a href="#" className="text-foreground hover:text-primary transition-colors">Support</a></li>
               </ul>
             </div>
@@ -45,7 +45,7 @@ export const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-foreground mb-4">Info</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-foreground hover:text-primary transition-colors">Contact Us</a></li>
+                <li><a href="/contact-us" className="text-foreground hover:text-primary transition-colors">Contact Us</a></li>
                 <li><a href="/terms" className="text-foreground hover:text-primary transition-colors">Terms</a></li>
                 <li><a href="/privacy-policy" className="text-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
               </ul>
