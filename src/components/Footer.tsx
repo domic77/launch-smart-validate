@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -15,7 +16,7 @@ export const Footer = () => {
               <a href="/maintenance" aria-label="Facebook"><Facebook className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
               <a href="/maintenance" aria-label="Instagram"><Instagram className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
               <a href="/maintenance" aria-label="Twitter"><Twitter className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="/maintenance" aria-label="LinkedIn"><Linkedin className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
+              <Link to="/maintenance" aria-label="LinkedIn"><Linkedin className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></Link>
             </div>
           </div>
 
@@ -26,7 +27,7 @@ export const Footer = () => {
               <h4 className="text-lg font-semibold text-foreground mb-4">Product</h4>
               <ul className="space-y-3">
                 <li><a href="#how-it-works" className="text-foreground hover:text-primary transition-colors">How it works</a></li>
-                <li><a href="/features" className="text-foreground hover:text-primary transition-colors">Features</a></li>
+                <li><Link to="/#features" className="text-foreground hover:text-primary transition-colors">Features</Link></li>
                 <li><a href="/pricing" className="text-foreground hover:text-primary transition-colors">Pricing</a></li>
               </ul>
             </div>
