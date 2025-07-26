@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 const FreeAiTool = () => {
   const [idea, setIdea] = useState("");
