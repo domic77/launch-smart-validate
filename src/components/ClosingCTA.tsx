@@ -22,7 +22,7 @@ export const ClosingCTA = () => {
                 <Link to="/maintenance">Start Validating Now</Link>
               </Button>
               <Button size="lg" variant="outline">
-                <Link to="/maintenance">Try Free AI Tool</Link>
+                <Link to="/free-ai-tool">Try Free AI Tool</Link>
               </Button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">

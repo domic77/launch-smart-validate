@@ -102,8 +102,8 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          <p className="mt-6 text-lg leading-8 text-foreground max-w-2xl mx-auto">
-            iValidate replaces guesswork with real-time data and social media integration, helping you validate ideas faster, save time and money, and build with confidence.
+          <p className="mt-6 text-lg leading-8 text-foreground max-w-2xl mx-auto font-semibold">
+            iValidate replaces guesswork with its social media integration and top of the line AI models , helping you with real time data to validate ideas faster, save time and money, to build with confidence.
           </p>
 
           <div className="mt-10 flex items-center justify-center">

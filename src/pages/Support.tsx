@@ -114,7 +114,7 @@ const Support: React.FC = () => {
         <Card className="bg-primary/5 border-primary/20 border-[1.5px] rounded-[24px] p-8 text-center">
           <p className="max-w-xl mx-auto text-foreground mb-6">Not ready to reach out? Try our free AI tools to get a taste of how easy idea validation can be with iValidate.</p>
           <Button size="lg" className="rounded-full">
-            <Link to="/maintenance">Try Free Tools</Link>
+            <Link to="/free-ai-tool">Try Free Tools</Link>
           </Button>
         </Card>
       </main>

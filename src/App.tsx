@@ -25,6 +25,7 @@ import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { PricingSection } from "./components/PricingSection";
 import MaintenancePage from "./pages/MaintenancePage";
+import FreeAiTool from "./pages/FreeAiTool";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +69,7 @@ const App = () => {
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/maintenance" element={<MaintenancePage />} />
+            <Route path="/free-ai-tool" element={<FreeAiTool />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

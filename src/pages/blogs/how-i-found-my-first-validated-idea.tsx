@@ -32,7 +32,7 @@ const BlogPost: React.FC = () => {
 
               <p>If you’re a first-time founder who’s struggling to find a validated idea, I can’t recommend iValidate enough. It’s a game-changer.</p>
 
-              <p>Ready to turn your hunch into a validated business opportunity? <Link to="/" className="text-blue-600 hover:underline">Get started</Link> or <Link to="/" className="text-blue-600 hover:underline">check out our free AI tools</Link>.</p>
+              <p>Ready to turn your hunch into a validated business opportunity? <Link to="/" className="text-blue-600 hover:underline">Get started</Link> or <Link to="/free-ai-tool" className="text-blue-600 hover:underline">check out our free AI tools</Link>.</p>
             </div>
             <div className="text-center mt-8">
               <Link to="/blogs" className="text-blue-600 hover:underline">← Back to Blogs</Link>
