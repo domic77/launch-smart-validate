@@ -120,7 +120,7 @@ const FreeAiTool = () => {
                 Want to take it further? Run a full validation with iValidate Pro.
               </p>
               <Button variant="link" className="mt-2">
-                Validate This Idea
+                <Link to="/maintenance">Validate This Idea</Link>
               </Button>
             </div>
           )}
