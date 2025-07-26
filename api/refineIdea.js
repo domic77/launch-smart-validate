@@ -11,152 +11,156 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res);
 };
 
+// Helper function to wait
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Helper function to make API call with retry
+async function callGeminiWithRetry(url, requestBody, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    console.log(`🔄 Attempt ${attempt}/${maxRetries}`);
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const responseText = await response.text();
+      console.log(`📈 Response status: ${response.status}`);
+
+      if (response.status === 429) {
+        console.log('⏳ Rate limited, parsing retry delay...');
+        
+        let retryDelay = 30000; // Default 30 seconds
+        try {
+          const errorData = JSON.parse(responseText);
+          const retryInfo = errorData.error?.details?.find(detail => 
+            detail['@type'] === 'type.googleapis.com/google.rpc.RetryInfo'
+          );
+          
+          if (retryInfo?.retryDelay) {
+            // Parse delay like "29s", "2m", etc.
+            const delayStr = retryInfo.retryDelay;
+            if (delayStr.endsWith('s')) {
+              retryDelay = parseInt(delayStr) * 1000;
+            } else if (delayStr.endsWith('m')) {
+              retryDelay = parseInt(delayStr) * 60 * 1000;
+            }
+          }
+        } catch (parseErr) {
+          console.log('Could not parse retry delay, using default');
+        }
+
+        if (attempt < maxRetries) {
+          console.log(`⏰ Waiting ${retryDelay/1000} seconds before retry...`);
+          await wait(retryDelay);
+          continue;
+        } else {
+          console.log('❌ Max retries reached');
+          return {
+            ok: false,
+            status: 429,
+            text: responseText,
+            isRateLimit: true
+          };
+        }
+      }
+
+      return {
+        ok: response.ok,
+        status: response.status,
+        text: responseText,
+        data: response.ok ? JSON.parse(responseText) : null
+      };
+
+    } catch (error) {
+      console.error(`❌ Attempt ${attempt} failed:`, error.message);
+      
+      if (attempt < maxRetries) {
+        const backoffDelay = Math.pow(2, attempt) * 1000; // Exponential backoff
+        console.log(`⏰ Waiting ${backoffDelay/1000} seconds before retry...`);
+        await wait(backoffDelay);
+      } else {
+        throw error;
+      }
+    }
+  }
+}
+
 async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  console.log('🚀 Starting API call...');
-  
-  // Check environment variables
   if (!process.env.GEMINI_API_KEY) {
-    console.error('❌ No API key found');
     return res.status(500).json({ 
-      message: 'API key not configured',
-      details: 'GEMINI_API_KEY environment variable is missing'
+      message: 'API key not configured' 
     });
   }
-
-  console.log('✅ API key found, length:', process.env.GEMINI_API_KEY.length);
-  console.log('✅ API key format check:', process.env.GEMINI_API_KEY.startsWith('AIzaSy'));
 
   const { idea } = req.body;
   if (!idea) {
     return res.status(400).json({ message: 'Idea is required' });
   }
 
-  console.log('📝 Processing idea:', idea.substring(0, 50) + '...');
+  console.log('🚀 Processing idea:', idea.substring(0, 50) + '...');
 
   try {
-    // Try the simplest possible request first
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${process.env.GEMINI_API_KEY}`;
+    // Use Gemini 1.5 Flash (higher rate limits)
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
     
-    console.log('🌐 Making request to Gemini API...');
-    console.log('📍 URL (masked):', url.replace(/key=.*/g, 'key=***'));
-
     const requestBody = {
       contents: [{
         parts: [{
-          text: `Hello, please respond with just: {"test": "success"}`
+          text: `Refine this startup idea: "${idea}". 
+          
+Please respond with ONLY valid JSON in this exact format:
+{"oneLiner": "refined idea here", "targetAudience": "target audience here", "problem": "problem it solves here"}
+
+No additional text, no markdown formatting, just the JSON object.`
         }]
       }]
     };
 
-    console.log('📦 Request body:', JSON.stringify(requestBody, null, 2));
+    console.log('🌐 Making request to Gemini Flash API...');
+    
+    const result = await callGeminiWithRetry(url, requestBody, 3);
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody)
-    });
+    if (!result.ok) {
+      if (result.isRateLimit) {
+        return res.status(429).json({
+          message: 'Rate limit exceeded',
+          details: 'Please try again in a few moments. Consider upgrading to paid tier for higher limits.',
+          retryAfter: 30
+        });
+      }
 
-    console.log('📈 Response status:', response.status);
-    console.log('📋 Response headers:', [...response.headers.entries()]);
-
-    // Get the response text first
-    const responseText = await response.text();
-    console.log('📄 Raw response:', responseText);
-
-    if (!response.ok) {
-      console.error('❌ HTTP Error:', response.status);
-      
-      // Try to parse error as JSON
       let errorDetails;
       try {
-        errorDetails = JSON.parse(responseText);
-        console.error('❌ Parsed error:', errorDetails);
-      } catch (parseErr) {
-        console.error('❌ Could not parse error response');
-        errorDetails = { rawError: responseText };
+        errorDetails = JSON.parse(result.text);
+      } catch (e) {
+        errorDetails = { rawError: result.text };
       }
 
       return res.status(500).json({
         message: 'Error from Gemini API',
-        httpStatus: response.status,
-        details: errorDetails,
-        apiKeyLength: process.env.GEMINI_API_KEY.length,
-        apiKeyFormat: process.env.GEMINI_API_KEY.startsWith('AIzaSy') ? 'correct' : 'incorrect'
+        details: errorDetails
       });
     }
 
-    // Parse successful response
-    let data;
-    try {
-      data = JSON.parse(responseText);
-      console.log('✅ Parsed response:', data);
-    } catch (parseErr) {
-      console.error('❌ Could not parse success response');
-      return res.status(500).json({
-        message: 'Invalid JSON response from Gemini',
-        rawResponse: responseText
-      });
-    }
-
-    // Check response structure
-    if (!data.candidates || !data.candidates[0]) {
-      console.error('❌ Invalid response structure');
+    const data = result.data;
+    
+    if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
       return res.status(500).json({
         message: 'Invalid response structure',
         receivedData: data
       });
     }
 
-    console.log('🎉 Success! Basic API call works');
-
-    // Now try the actual business idea request
-    const realRequestBody = {
-      contents: [{
-        parts: [{
-          text: `Refine this startup idea: "${idea}". 
-          
-Please respond with ONLY valid JSON in this exact format:
-{"oneLiner": "refined idea here", "targetAudience": "target audience here", "problem": "problem it solves here"}`
-        }]
-      }]
-    };
-
-    console.log('🎯 Making real request...');
-    
-    const realResponse = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(realRequestBody)
-    });
-
-    const realResponseText = await realResponse.text();
-
-    if (!realResponse.ok) {
-      console.error('❌ Real request failed:', realResponse.status);
-      let realErrorDetails;
-      try {
-        realErrorDetails = JSON.parse(realResponseText);
-      } catch (e) {
-        realErrorDetails = { rawError: realResponseText };
-      }
-      
-      return res.status(500).json({
-        message: 'Error from Gemini API on real request',
-        details: realErrorDetails
-      });
-    }
-
-    const realData = JSON.parse(realResponseText);
-    const aiText = realData.candidates[0].content.parts[0].text;
-    
+    const aiText = data.candidates[0].content.parts[0].text;
     console.log('🤖 AI response:', aiText);
 
     // Parse the JSON response
@@ -173,16 +177,22 @@ Please respond with ONLY valid JSON in this exact format:
       });
     }
 
-    console.log('✅ Successfully parsed AI response');
+    // Validate required fields
+    if (!parsedResponse.oneLiner || !parsedResponse.targetAudience || !parsedResponse.problem) {
+      return res.status(500).json({
+        message: 'AI response missing required fields',
+        received: parsedResponse
+      });
+    }
+
+    console.log('✅ Successfully processed idea');
     return res.status(200).json(parsedResponse);
 
   } catch (error) {
     console.error('💥 Unexpected error:', error);
-    console.error('Stack:', error.stack);
     return res.status(500).json({
       message: 'Internal Server Error',
-      details: error.message,
-      stack: error.stack
+      details: error.message
     });
   }
 }
