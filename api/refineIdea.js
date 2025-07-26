@@ -11,6 +11,51 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res);
 };
 
+// Simple in-memory storage for rate limiting
+// In production, you'd use Redis or a database
+const dailyUsage = new Map();
+const DAILY_LIMIT_PER_IP = 5;
+
+// Helper function to get client IP
+function getClientIP(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0] || 
+         req.headers['x-real-ip'] || 
+         req.connection?.remoteAddress || 
+         req.socket?.remoteAddress ||
+         'unknown';
+}
+
+// Helper function to check and update usage
+function checkDailyLimit(ip) {
+  const today = new Date().toDateString();
+  const userKey = `${ip}_${today}`;
+  
+  const currentUsage = dailyUsage.get(userKey) || 0;
+  
+  if (currentUsage >= DAILY_LIMIT_PER_IP) {
+    return { allowed: false, usage: currentUsage, remaining: 0 };
+  }
+  
+  // Increment usage
+  dailyUsage.set(userKey, currentUsage + 1);
+  
+  return { 
+    allowed: true, 
+    usage: currentUsage + 1, 
+    remaining: DAILY_LIMIT_PER_IP - (currentUsage + 1) 
+  };
+}
+
+// Clean up old entries (run occasionally)
+function cleanupOldEntries() {
+  const today = new Date().toDateString();
+  for (const [key] of dailyUsage) {
+    if (!key.endsWith(today)) {
+      dailyUsage.delete(key);
+    }
+  }
+}
+
 // Helper function to wait
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -42,7 +87,6 @@ async function callGeminiWithRetry(url, requestBody, maxRetries = 3) {
           );
           
           if (retryInfo?.retryDelay) {
-            // Parse delay like "29s", "2m", etc.
             const delayStr = retryInfo.retryDelay;
             if (delayStr.endsWith('s')) {
               retryDelay = parseInt(delayStr) * 1000;
@@ -95,6 +139,28 @@ async function handler(req, res) {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
+  // Clean up old entries occasionally (1% chance per request)
+  if (Math.random() < 0.01) {
+    cleanupOldEntries();
+  }
+
+  // Check daily limit per IP
+  const clientIP = getClientIP(req);
+  const limitCheck = checkDailyLimit(clientIP);
+  
+  console.log(`📊 IP: ${clientIP}, Usage: ${limitCheck.usage}/${DAILY_LIMIT_PER_IP}`);
+
+  if (!limitCheck.allowed) {
+    console.log(`❌ Daily limit exceeded for IP: ${clientIP}`);
+    return res.status(429).json({
+      message: 'Daily limit exceeded',
+      details: `You have reached the daily limit of ${DAILY_LIMIT_PER_IP} idea validations. Please try again tomorrow.`,
+      usage: limitCheck.usage,
+      limit: DAILY_LIMIT_PER_IP,
+      resetTime: 'Tomorrow at midnight UTC'
+    });
+  }
+
   if (!process.env.GEMINI_API_KEY) {
     return res.status(500).json({ 
       message: 'API key not configured' 
@@ -106,7 +172,11 @@ async function handler(req, res) {
     return res.status(400).json({ message: 'Idea is required' });
   }
 
-  console.log('🚀 Processing idea:', idea.substring(0, 50) + '...');
+  if (idea.length > 500) {
+    return res.status(400).json({ message: 'Idea must be 500 characters or less' });
+  }
+
+  console.log(`🚀 Processing idea for IP ${clientIP}:`, idea.substring(0, 50) + '...');
 
   try {
     // Use Gemini 1.5 Flash (higher rate limits)
@@ -116,11 +186,12 @@ async function handler(req, res) {
       contents: [{
         parts: [{
           text: `Refine this startup idea: "${idea}". 
-          
-Please respond with ONLY valid JSON in this exact format:
-{"oneLiner": "refined idea here", "targetAudience": "target audience here", "problem": "problem it solves here"}
 
-No additional text, no markdown formatting, just the JSON object.`
+IMPORTANT: Respond with ONLY valid JSON in this exact format. No markdown, no additional text:
+
+{"oneLiner": "A clear, compelling one-sentence description of the refined idea", "targetAudience": "Specific target market and user demographics", "problem": "The main problem this startup solves"}
+
+Ensure the JSON is properly formatted and contains all three fields.`
         }]
       }]
     };
@@ -132,9 +203,11 @@ No additional text, no markdown formatting, just the JSON object.`
     if (!result.ok) {
       if (result.isRateLimit) {
         return res.status(429).json({
-          message: 'Rate limit exceeded',
-          details: 'Please try again in a few moments. Consider upgrading to paid tier for higher limits.',
-          retryAfter: 30
+          message: 'API rate limit exceeded',
+          details: 'Our AI service is temporarily busy. Please try again in a few moments.',
+          retryAfter: 30,
+          usage: limitCheck.usage,
+          remaining: limitCheck.remaining
         });
       }
 
@@ -146,7 +219,7 @@ No additional text, no markdown formatting, just the JSON object.`
       }
 
       return res.status(500).json({
-        message: 'Error from Gemini API',
+        message: 'Error from AI service',
         details: errorDetails
       });
     }
@@ -155,8 +228,8 @@ No additional text, no markdown formatting, just the JSON object.`
     
     if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
       return res.status(500).json({
-        message: 'Invalid response structure',
-        receivedData: data
+        message: 'Invalid response from AI service',
+        details: 'No content in response'
       });
     }
 
@@ -166,33 +239,48 @@ No additional text, no markdown formatting, just the JSON object.`
     // Parse the JSON response
     let parsedResponse;
     try {
+      // Clean the response text (remove any markdown formatting)
       const cleanText = aiText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       parsedResponse = JSON.parse(cleanText);
     } catch (parseError) {
       console.error('❌ JSON parse error:', parseError);
+      console.error('Raw AI response:', aiText);
+      
       return res.status(500).json({
-        message: 'AI response is not valid JSON',
-        details: parseError.message,
-        rawResponse: aiText
+        message: 'Invalid response format from AI',
+        details: 'The AI response could not be parsed as JSON',
+        rawResponse: aiText.substring(0, 200) + '...'
       });
     }
 
     // Validate required fields
     if (!parsedResponse.oneLiner || !parsedResponse.targetAudience || !parsedResponse.problem) {
+      console.error('❌ Missing required fields:', parsedResponse);
       return res.status(500).json({
-        message: 'AI response missing required fields',
-        received: parsedResponse
+        message: 'Incomplete response from AI',
+        details: 'Missing required fields: oneLiner, targetAudience, or problem',
+        received: Object.keys(parsedResponse)
       });
     }
 
-    console.log('✅ Successfully processed idea');
-    return res.status(200).json(parsedResponse);
+    console.log(`✅ Successfully processed idea for IP ${clientIP}`);
+    
+    // Return success with usage info
+    return res.status(200).json({
+      ...parsedResponse,
+      usage: {
+        current: limitCheck.usage,
+        limit: DAILY_LIMIT_PER_IP,
+        remaining: limitCheck.remaining
+      }
+    });
 
   } catch (error) {
     console.error('💥 Unexpected error:', error);
     return res.status(500).json({
       message: 'Internal Server Error',
-      details: error.message
+      details: error.message,
+      timestamp: new Date().toISOString()
     });
   }
 }
