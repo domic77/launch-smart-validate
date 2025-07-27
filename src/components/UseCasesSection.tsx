@@ -36,7 +36,7 @@ const useCases = [
   {
     role: "Startup Teams",
     heading: "Clarity for the Whole Team",
-    text: "Before your team burns dev hours, get aligned on what actually has demand. iValidate shows what’s real — so you don’t build what no one wants.",
+    text: "Before your team burns dev hours, get aligned on what actually has demand. iValidate shows what's real — so you don't build what no one wants.",
     image: teamImage,
     icon: <Users className="h-7 w-7" />,
     features: [
@@ -53,14 +53,13 @@ const NavButton = ({ direction, useCase, onClick }: { direction: 'prev' | 'next'
         <Button
             onClick={onClick}
             variant="outline"
-            className={`absolute top-1/2 -translate-y-1/2 ${isPrev ? 'right-full -translate-x-4' : 'left-full translate-x-4'} z-10 h-auto p-3 group text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300 ease-in-out`}
+            className="h-auto p-2 text-blue-500 bg-white hover:bg-gray-50 hover:text-blue-500 transition-colors rounded-[12px] border-[1.5px] border-blue-500/30 flex-shrink-0"
         >
-            <div className={`flex items-center gap-3 ${isPrev ? 'flex-row-reverse' : ''}`}>
-                {isPrev ? <ArrowLeft className="h-7 w-7" /> : <ArrowRight className="h-7 w-7" />}
-                {useCase.icon}
-                <span className="hidden group-hover:block text-md font-semibold whitespace-nowrap">
-                    {useCase.role}
-                </span>
+            <div className={`flex items-center gap-2 ${isPrev ? 'flex-row-reverse' : ''}`}>
+                {isPrev ? <ArrowLeft className="h-5 w-5" /> : <ArrowRight className="h-5 w-5" />}
+                <div className="h-5 w-5 flex items-center justify-center">
+                    {useCase.icon}
+                </div>
             </div>
         </Button>
     );
@@ -82,10 +81,10 @@ const DesktopCarousel = () => {
     const nextUseCase = useCases[(activeIndex + 1) % useCases.length];
 
     return (
-        <div className="relative max-w-6xl mx-auto">
+        <div className="flex items-center gap-4 w-full max-w-7xl mx-auto">
             <NavButton direction="prev" useCase={prevUseCase} onClick={handlePrev} />
 
-            <Card className="w-full overflow-hidden rounded-2xl border bg-background">
+            <Card className="flex-1 overflow-hidden rounded-[16px] border-[1.5px] border-blue-500/30" style={{ backgroundColor: '#ffffff' }}>
                 <CardContent className="p-0 flex flex-col lg:flex-row items-stretch min-h-[580px]">
                     <div className="w-full lg:w-1/2 p-6 flex items-center justify-center bg-muted/20 relative">
                         <AnimatePresence mode="wait">
@@ -134,7 +133,7 @@ const DesktopCarousel = () => {
 }
 
 const MobileCard = ({ useCase }: { useCase: any }) => (
-    <Card className="w-full overflow-hidden rounded-2xl border bg-background mb-8">
+    <Card className="w-full overflow-hidden rounded-[16px] border-[1.5px] border-blue-500/30 hover:bg-gray-50 transition-colors shadow-sm" style={{ backgroundColor: '#ffffff' }}>
         <CardContent className="p-0 flex flex-col items-stretch">
             <div className="p-6 bg-muted/20">
                 <img
@@ -164,19 +163,19 @@ export const UseCasesSection = () => {
   const isMobile = useMobile('(max-width: 1023px)');
 
   return (
-    <section id="use-cases" className="py-20 lg:py-28 bg-background">
+    <section id="use-cases" className="py-20 lg:py-28" style={{ backgroundColor: '#fafafa' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4">
             Who <span className="text-gradient-blue-teal">iValidate</span> Helps
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-foreground text-xl max-md:text-lg max-sm:text-base leading-relaxed mb-6 max-w-3xl mx-auto font-medium">
             Built for the innovators, the builders, and the dreamers.
           </p>
         </div>
 
         {isMobile ? (
-            <div className="max-w-xl mx-auto">
+            <div className="max-w-xl mx-auto space-y-4">
                 {useCases.map((useCase, index) => (
                     <MobileCard key={index} useCase={useCase} />
                 ))}
@@ -186,8 +185,8 @@ export const UseCasesSection = () => {
         )}
 
         <div className="text-center mt-12">
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                These are just a few — iValidate works for solo builders, teams, and everything in between. If you’ve got an idea, we help you validate it <span className="font-bold uppercase">right</span>.
+            <p className="text-foreground text-xl max-md:text-lg max-sm:text-base leading-relaxed mb-6 max-w-2xl mx-auto font-medium">
+                These are just a few — iValidate works for solo builders, teams, and everything in between. If you've got an idea, we help you validate it <span className="font-bold uppercase">right</span>.
             </p>
         </div>
       </div>
