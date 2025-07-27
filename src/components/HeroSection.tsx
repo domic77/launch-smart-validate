@@ -59,11 +59,18 @@ export const HeroSection = () => {
   }, [currentIndex]);
 
   return (
-    <section className="relative pt-36 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute right-1/4 top-0 -translate-y-[40%] w-[640px] h-[640px] rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute left-1/4 bottom-0 translate-y-[30%] w-[640px] h-[640px] rounded-full bg-purple-500/20 blur-3xl" />
+      </div>
+
+      {/* Hero Content Glow Effect */}
+      <div className="absolute inset-0 -z-5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] rounded-full bg-gradient-to-r from-green-400/30 via-blue-500/30 to-teal-400/30 blur-3xl opacity-60" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-gradient-to-br from-blue-400/20 via-teal-500/20 to-green-400/20 blur-2xl opacity-80" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[450px] rounded-full bg-gradient-to-t from-teal-300/15 via-blue-400/15 to-green-300/15 blur-xl opacity-90" />
       </div>
 
       <div className="container relative">

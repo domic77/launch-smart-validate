@@ -106,15 +106,17 @@ export const Navigation = () => {
                   
                   {/* Dropdown menu */}
                   <div 
-                    className={`absolute right-0 mt-2 min-w-full overflow-hidden transition-all duration-300 origin-top-right bg-background/95 backdrop-blur-sm ${
+                    className={`absolute right-0 mt-2 min-w-full overflow-hidden transition-all duration-300 origin-top-right rounded-[16px] border-[1.5px] border-blue-500/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg ${
                       isCtaHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                     }`}
                   >
-                    <Button 
-                      className="w-full justify-center font-medium h-10 px-4 bg-white rounded-[16px] hover:bg-gray-100 border-[1.5px] border-blue-500/30 text-black"
-                    >
-                      <Link to="/maintenance">Sign In</Link>
-                    </Button>
+                    <div className="p-2">
+                      <Button 
+                        className="w-full justify-center font-medium h-10 px-4 bg-white rounded-[12px] hover:bg-gray-100 border-[1.5px] border-blue-500/30 text-black"
+                      >
+                        <Link to="/maintenance">Sign In</Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
