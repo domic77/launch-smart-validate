@@ -12,7 +12,7 @@ export const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 5) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -53,7 +53,7 @@ export const Navigation = () => {
       <div className="w-full py-4">
         <div className="w-[95%] max-w-[1200px] mx-auto">
           {/* Single navbar that changes appearance on scroll */}
-          <nav className={`w-full px-4 sm:px-6 lg:px-8 py-3 transition-all duration-300 ease-in-out ${
+          <nav className={`w-full px-4 sm:px-6 lg:px-8 py-3 transition-all duration-200 ease-out ${
             isScrolled ? 'rounded-[16px] border-[1.5px] border-blue-500/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60' : ''
           }`}>
             <div className="flex items-center justify-between">

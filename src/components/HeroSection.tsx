@@ -25,49 +25,64 @@ export const HeroSection = () => {
       const container = containerRef.current;
       const children = Array.from(container.children) as HTMLElement[];
       
-      // Reset positions
-      children.forEach((child, i) => {
-        child.style.opacity = i === currentIndex ? "1" : "0";
-        child.style.transform = i === currentIndex 
-          ? "translateY(0)" 
-          : "translateY(100%)";
+      if (children.length === 0) return;
+      
+      // Clear any existing animations
+      children.forEach(child => {
+        child.style.transition = 'none';
       });
       
-      // Animate out current and in next
+      // Set initial positions
+      children.forEach((child, i) => {
+        if (i === currentIndex) {
+          child.style.opacity = "1";
+          child.style.transform = "translateY(0)";
+        } else {
+          child.style.opacity = "0";
+          child.style.transform = "translateY(100%)";
+        }
+      });
+      
+      // Animate to next
       const nextIndex = (currentIndex + 1) % cyclingPhrases.length;
       
-      // Prepare next element to come from below
-      children[nextIndex].style.opacity = "0";
-      children[nextIndex].style.transform = "translateY(100%)";
-      
-      // Animate current out (up) and next in (from below)
-      animate(
-        children[currentIndex],
-        { opacity: [1, 0], transform: ["translateY(0)", "translateY(-100%)"] },
-        { duration: 0.5, easing: "ease-in-out" }
-      );
-      
-      // Slight delay for the next element
-      setTimeout(() => {
+      if (children[currentIndex] && children[nextIndex]) {
+        // Animate current out
         animate(
-          children[nextIndex],
-          { opacity: [0, 1], transform: ["translateY(100%)", "translateY(0)"] },
-          { duration: 0.5, easing: "ease-out" }
+          children[currentIndex],
+          { 
+            opacity: [1, 0], 
+            transform: ["translateY(0)", "translateY(-100%)"] 
+          },
+          { duration: 0.4, easing: "ease-in-out" }
         );
-      }, 300);
+        
+        // Animate next in with delay
+        setTimeout(() => {
+          if (children[nextIndex]) {
+            animate(
+              children[nextIndex],
+              { 
+                opacity: [0, 1], 
+                transform: ["translateY(100%)", "translateY(0)"] 
+              },
+              { duration: 0.4, easing: "ease-out" }
+            );
+          }
+        }, 200);
+      }
     }
-  }, [currentIndex]);
+  }, [currentIndex, cyclingPhrases.length]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-0">
       {/* Background gradients */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute right-1/4 top-0 -translate-y-[40%] w-[640px] h-[640px] rounded-full bg-blue-500/20 blur-3xl" />
-        <div className="absolute left-1/4 bottom-0 translate-y-[30%] w-[640px] h-[640px] rounded-full bg-purple-500/20 blur-3xl" />
+      <div className="absolute inset-0 -z-20">
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-[20%] w-[500px] h-[500px] rounded-full bg-blue-500/15 blur-3xl" />
       </div>
 
       {/* Hero Content Glow Effect */}
-      <div className="absolute inset-0 -z-5">
+      <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] rounded-full bg-gradient-to-r from-green-400/30 via-blue-500/30 to-teal-400/30 blur-3xl opacity-60" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-gradient-to-br from-blue-400/20 via-teal-500/20 to-green-400/20 blur-2xl opacity-80" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[450px] rounded-full bg-gradient-to-t from-teal-300/15 via-blue-400/15 to-green-300/15 blur-xl opacity-90" />
