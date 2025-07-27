@@ -43,7 +43,7 @@ const MaintenancePage: React.FC = () => {
               <Card className="rounded-xl border-[1.5px] bg-white p-6">
                 <h3 className="text-2xl font-bold mb-4">Need Immediate Help?</h3>
                 <p className="text-muted-foreground">
-                  Email us at <a href="mailto:support@ivalidate.xyz" className="text-primary hover:underline">support@ivalidate.xyz</a> or reach out on X: <a href="https://twitter.com/iValidateHQ" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@iValidateHQ</a>
+                  Email us at <a href="mailto:support@ivalidate.xyz" className="text-primary hover:underline">support@ivalidate.xyz</a> or reach out on X: <a href="https://twitter.com/AskiValidate" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@AskiValidate</a>
                 </p>
               </Card>
             </div>
