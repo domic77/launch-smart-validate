@@ -125,7 +125,7 @@ export const HeroSection = () => {
           </div>
 
           <p className="mt-0 text-lg leading-8 text-foreground max-w-2xl mx-auto">
-            iValidate replaces guesswork with its social media integration and top of the line AI models , helping you with real time data to validate ideas faster, save time and money, to build with confidence.
+            iValidate replaces guesswork with AI and social media data, helping you validate ideas faster, cost-effectively, and build with confidence.
           </p>
 
           <div className="mt-10 flex items-center justify-center">
