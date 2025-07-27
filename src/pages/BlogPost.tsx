@@ -13,14 +13,14 @@ const BlogPost: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-background py-12 px-4 pt-28">
+    <div className="flex flex-col min-h-screen py-12 px-4 pt-28" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4">
-        <Card className="max-w-4xl mx-auto rounded-2xl border bg-background prose prose-lg">
+        <Card className="max-w-4xl mx-auto rounded-[16px] border-[1.5px] border-blue-500/30 hover:bg-gray-50 transition-colors shadow-sm overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
           <CardContent className="pt-10">
-            <Link to="/blog" className="text-blue-600 hover:underline mb-4 block">← Back to Blog</Link>
+            <Link to="/blog" className="inline-flex items-center gap-2 px-4 py-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white text-primary hover:bg-primary hover:text-white transition-colors font-medium mb-4">← Back to Blog</Link>
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
             <p className="text-muted-foreground mb-8">{post.date}</p>
-            <div className="prose max-w-none">
+            <div className="prose max-w-none text-foreground">
               <p>{post.description}</p>
               <p>The rise of RESTful APIs has been a paradigm shift in web development. These APIs, often using JSON for data exchange, are the backbone of countless applications. But as applications grow in complexity, so do the challenges of managing data fetching. This is where GraphQL, a query language for APIs, comes into play. This post will explore the reasons why you should consider using GraphQL in your next project and how it compares to traditional REST APIs.</p>
               <figure>

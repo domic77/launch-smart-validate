@@ -20,7 +20,7 @@ export const Footer = () => {
                 <a href="/maintenance" aria-label="Instagram"><Instagram className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
               </div>
               <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
-                <a href="/maintenance" aria-label="Twitter"><Twitter className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
+                <a href="https://twitter.com/AskiValidate" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
               </div>
               <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
                 <Link to="/maintenance" aria-label="LinkedIn"><Linkedin className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></Link>

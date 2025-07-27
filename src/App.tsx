@@ -1,5 +1,4 @@
 import { Toaster } from "@/components/ui/toaster";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -50,7 +49,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <Suspense fallback={<div className="flex h-screen w-screen items-center justify-center"><Skeleton className="h-full w-full" /></div>}>
+        <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pricing" element={<Pricing />} />
