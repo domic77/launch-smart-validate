@@ -1,15 +1,45 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
+import { Lightbulb } from "lucide-react";
 
 const FreeAiTool = () => {
   const [idea, setIdea] = useState("");
   const [refinedIdea, setRefinedIdea] = useState<{oneLiner: string, targetAudience: string, problem: string} | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [dailyUsage, setDailyUsage] = useState(0);
+  
+  const DAILY_LIMIT = 5; // Changed to 5 as requested
+
+  // Initialize usage tracking
+  useEffect(() => {
+    const today = new Date().toDateString();
+    const savedDate = localStorage.getItem('lastResetDate');
+    const savedUsage = parseInt(localStorage.getItem('dailyUsage')) || 0;
+
+    if (savedDate !== today) {
+      // New day, reset usage
+      setDailyUsage(0);
+      localStorage.setItem('dailyUsage', '0');
+      localStorage.setItem('lastResetDate', today);
+    } else {
+      // Same day, load existing usage
+      setDailyUsage(savedUsage);
+    }
+  }, []);
+
+  // Increment usage counter
+  const incrementUsage = () => {
+    const newUsage = dailyUsage + 1;
+    setDailyUsage(newUsage);
+    localStorage.setItem('dailyUsage', newUsage.toString());
+  };
+
+  const getRemainingUses = () => DAILY_LIMIT - dailyUsage;
 
   const handleRefine = async () => {
     if (!idea.trim()) {
@@ -17,6 +47,13 @@ const FreeAiTool = () => {
       setRefinedIdea(null);
       return;
     }
+
+    // Check daily limit
+    if (dailyUsage >= DAILY_LIMIT) {
+      setError(`Daily limit reached (${DAILY_LIMIT} ideas per day). Try again tomorrow!`);
+      return;
+    }
+
     setError(null);
     setIsLoading(true);
     setRefinedIdea(null); // Clear previous results
@@ -38,6 +75,7 @@ const FreeAiTool = () => {
       }
 
       setRefinedIdea(data);
+      incrementUsage(); // Increment usage on successful refinement
     } catch (err) {
       setError('An unexpected error occurred.');
       console.error(err);
@@ -52,7 +90,7 @@ const FreeAiTool = () => {
         <div className="py-0 px-4 mx-auto max-w-screen-xl lg:py-2 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
             <h1 className="text-4xl font-bold text-center mb-4">
-              Explore the <span className="text-gradient-blue-teal">iValidate</span> Free AI Tools
+              Explore the <span className="text-gradient-blue-teal">iValidate</span> Free AI Tool
             </h1>
             <p className="text-center text-gray-500 mb-12">
               Get a taste of how iValidate simplifies idea validation, without giving away the full sauce.
@@ -68,6 +106,15 @@ const FreeAiTool = () => {
               <p className="text-gray-500 dark:text-gray-400 text-center mb-0">
                 Turn rough startup ideas into clear, pitchable concepts instantly.
               </p>
+              {/* Usage Counter */}
+              <div className="flex justify-center items-center gap-4 mt-3 text-sm text-gray-600">
+                <span className="bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                  {getRemainingUses()} ideas remaining today
+                </span>
+                <span className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                  {idea.length}/500 characters
+                </span>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -76,9 +123,15 @@ const FreeAiTool = () => {
                   value={idea}
                   onChange={(e) => setIdea(e.target.value)}
                   className="py-6"
+                  maxLength={500}
                 />
                 {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-                <Button onClick={handleRefine} disabled={isLoading} className="w-full h-10 px-4 text-white font-medium font-prompt flex items-center gap-1 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30">
+                <Button 
+                  onClick={handleRefine} 
+                  disabled={isLoading || dailyUsage >= DAILY_LIMIT} 
+                  className="w-full h-10 px-4 text-white font-medium font-prompt flex items-center gap-2 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30"
+                >
+                  <Lightbulb className="w-4 h-4" />
                   {isLoading ? "Refining..." : "Refine My Idea"}
                 </Button>
               </div>
