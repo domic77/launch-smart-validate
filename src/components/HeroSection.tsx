@@ -91,7 +91,7 @@ export const HeroSection = () => {
       <div className="container relative px-4">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-3 sm:px-4 py-1.5 mb-8 flex-nowrap whitespace-nowrap">
+          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-3 sm:px-4 py-1.5 mb-8 flex-nowrap whitespace-nowrap mt-4">
             <span className="text-xs sm:text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
             <div className="mx-1.5 sm:mx-2 h-3 w-px bg-border" />
             <span className="text-xs sm:text-sm text-foreground">Save Time & Cost</span>
