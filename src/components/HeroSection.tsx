@@ -88,29 +88,29 @@ export const HeroSection = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[450px] rounded-full bg-gradient-to-t from-teal-300/15 via-blue-400/15 to-green-300/15 blur-xl opacity-90" />
       </div>
 
-      <div className="container relative">
+      <div className="container relative px-4">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-4 py-1.5 mb-8 flex-nowrap">
-            <span className="text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
-            <div className="mx-2 h-3 w-px bg-border" />
-            <span className="text-sm text-foreground">Save Time & Cost</span>
+          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-3 sm:px-4 py-1.5 mb-8 flex-nowrap whitespace-nowrap">
+            <span className="text-xs sm:text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
+            <div className="mx-1.5 sm:mx-2 h-3 w-px bg-border" />
+            <span className="text-xs sm:text-sm text-foreground">Save Time & Cost</span>
           </div>
 
           {/* Main content */}
           <div className="space-y-2">
             {/* Static heading */}
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
               Know Before You Build.
             </h1>
             
-            {/* Cycling headings */}
-            <div className="relative h-[84px] sm:h-[96px] md:h-[108px] lg:h-[120px] overflow-hidden">
-              <div ref={containerRef} className="absolute inset-0">
+            {/* Cycling headings - Dynamic height that adapts to content */}
+            <div className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px] xl:min-h-[180px] overflow-hidden">
+              <div ref={containerRef} className="absolute inset-0 w-full">
                 {cyclingPhrases.map((phrase, i) => (
                   <h2 
                     key={i}
-                    className="absolute inset-0 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl transition-all duration-500"
+                    className="absolute top-0 left-0 w-full text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl transition-all duration-500 leading-tight"
                   >
                     <span className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
                       {phrase.start}
@@ -124,11 +124,11 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          <p className="mt-0 text-lg leading-8 text-foreground max-w-2xl mx-auto">
+          <p className="mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-foreground max-w-2xl mx-auto px-4">
             iValidate replaces guesswork with AI and social media data, helping you validate ideas faster, cost-effectively, and build with confidence.
           </p>
 
-          <div className="mt-10 flex items-center justify-center">
+          <div className="mt-8 sm:mt-10 flex items-center justify-center px-4">
             <Button 
               className="h-10 px-4 text-white font-medium font-prompt flex items-center gap-1 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30"
             >
