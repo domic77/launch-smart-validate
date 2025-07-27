@@ -1,31 +1,33 @@
 import { Toaster } from "@/components/ui/toaster";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Blogs from "./pages/Blogs";
-import BlogPost from "./pages/BlogPost";
-import HowIValidateHelpsYouSpotABadIdeaFast from "./pages/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast";
-import FromDoubtToData from "./pages/blogs/from-doubt-to-data";
-import HowIFoundMyFirstValidatedIdea from "./pages/blogs/how-i-found-my-first-validated-idea";
-import Support from "./pages/Support";
-import GettingStarted from "./pages/support/getting-started";
-import ConnectWorkspace from "./pages/support/connect-workspace";
-import AIPoweredValidation from "./pages/support/ai-powered-validation";
-import ValidationReports from "./pages/support/validation-reports";
-import ManagingWorkflows from "./pages/support/managing-workflows";
-import ValidationScore from "./pages/support/validation-score";
-import CommonErrors from "./pages/support/common-errors";
-import Billing from "./pages/support/billing";
-import ContactUs from "./pages/ContactUs";
-import Terms from "./pages/Terms";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import { PricingSection } from "./components/PricingSection";
-import MaintenancePage from "./pages/MaintenancePage";
-import FreeAiTool from "./pages/FreeAiTool";
+import { useEffect, lazy, Suspense } from "react";
+
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const HowIValidateHelpsYouSpotABadIdeaFast = lazy(() => import("./pages/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast"));
+const FromDoubtToData = lazy(() => import("./pages/blogs/from-doubt-to-data"));
+const HowIFoundMyFirstValidatedIdea = lazy(() => import("./pages/blogs/how-i-found-my-first-validated-idea"));
+const Support = lazy(() => import("./pages/Support"));
+const GettingStarted = lazy(() => import("./pages/support/getting-started"));
+const ConnectWorkspace = lazy(() => import("./pages/support/connect-workspace"));
+const AIPoweredValidation = lazy(() => import("./pages/support/ai-powered-validation"));
+const ValidationReports = lazy(() => import("./pages/support/validation-reports"));
+const ManagingWorkflows = lazy(() => import("./pages/support/managing-workflows"));
+const ValidationScore = lazy(() => import("./pages/support/validation-score"));
+const CommonErrors = lazy(() => import("./pages/support/common-errors"));
+const Billing = lazy(() => import("./pages/support/billing"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Terms = lazy(() => import("./pages/Terms"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const MaintenancePage = lazy(() => import("./pages/MaintenancePage"));
+const FreeAiTool = lazy(() => import("./pages/FreeAiTool"));
 
 const queryClient = new QueryClient();
 
@@ -48,9 +50,10 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <Suspense fallback={<div className="flex h-screen w-screen items-center justify-center"><Skeleton className="h-full w-full" /></div>}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/pricing" element={<PricingSection />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogPost />} />
             <Route path="/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
@@ -73,6 +76,7 @@ const App = () => {
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+        </Suspense>
       </TooltipProvider>
     </QueryClientProvider>
   );

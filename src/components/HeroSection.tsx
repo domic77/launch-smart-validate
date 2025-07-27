@@ -91,7 +91,7 @@ export const HeroSection = () => {
       <div className="container relative">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-4 py-1.5 mb-8">
+          <div className="inline-flex items-center rounded-[16px] border-[1.5px] border-border/40 bg-white backdrop-blur-sm px-4 py-1.5 mb-8 flex-nowrap">
             <span className="text-sm font-medium">✨ <span className="text-gradient-blue-teal">AI-Driven Validation</span></span>
             <div className="mx-2 h-3 w-px bg-border" />
             <span className="text-sm text-foreground">Save Time & Cost</span>
@@ -124,7 +124,7 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          <p className="mt-6 text-lg leading-8 text-foreground max-w-2xl mx-auto">
+          <p className="mt-0 text-lg leading-8 text-foreground max-w-2xl mx-auto">
             iValidate replaces guesswork with its social media integration and top of the line AI models , helping you with real time data to validate ideas faster, save time and money, to build with confidence.
           </p>
 

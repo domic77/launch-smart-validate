@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 
-export const PricingSection = () => {
+const PricingSection = () => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   const oneTimePlan = {
@@ -224,3 +224,5 @@ export const PricingSection = () => {
     </>
   );
 };
+
+export default PricingSection;

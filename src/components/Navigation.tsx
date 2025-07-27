@@ -4,6 +4,8 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import iValidateLogo from '@/assets/ivalidate-logos/iValidate-logo.png';
 
+const preloadPricing = () => import("../pages/Pricing");
+
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,6 +76,7 @@ export const Navigation = () => {
                         key={item.label}
                         to={item.href}
                         className="text-foreground hover:text-primary px-2 md:px-3 lg:px-4 py-2 text-sm whitespace-nowrap font-medium font-prompt transition-colors duration-200"
+                        onMouseEnter={item.href === "/pricing" ? preloadPricing : undefined}
                       >
                         {item.label}
                       </Link>
