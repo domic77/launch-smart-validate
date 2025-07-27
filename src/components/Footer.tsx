@@ -3,27 +3,35 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border/50 pt-16 pb-8">
+    <footer className="pt-16 pb-8" style={{ backgroundColor: '#fafafa' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-24 text-center md:text-left">
           {/* Column 1: iValidate */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-3xl font-bold text-gradient-blue-teal font-prompt mb-2">iValidate</h3>
-            <p className="text-foreground mb-6 text-center md:text-left">
-              Your startup’s first stop for smart idea validation
+            <p className="text-foreground mb-6 text-center md:text-left leading-relaxed">
+              Your startup's first stop for smart idea validation
             </p>
-            <div className="flex space-x-6">
-              <a href="/maintenance" aria-label="Facebook"><Facebook className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="/maintenance" aria-label="Instagram"><Instagram className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <a href="/maintenance" aria-label="Twitter"><Twitter className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></a>
-              <Link to="/maintenance" aria-label="LinkedIn"><Linkedin className="h-6 w-6 text-foreground hover:text-primary transition-colors" /></Link>
+            <div className="flex space-x-4">
+              <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
+                <a href="/maintenance" aria-label="Facebook"><Facebook className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
+              </div>
+              <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
+                <a href="/maintenance" aria-label="Instagram"><Instagram className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
+              </div>
+              <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
+                <a href="/maintenance" aria-label="Twitter"><Twitter className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></a>
+              </div>
+              <div className="p-2 rounded-[12px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
+                <Link to="/maintenance" aria-label="LinkedIn"><Linkedin className="h-5 w-5 text-foreground hover:text-primary transition-colors" /></Link>
+              </div>
             </div>
           </div>
 
           {/* Column 2 & 3: Link Columns */}
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 md:mt-0">
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-8 mt-8 md:mt-0">
             {/* Product Column */}
-            <div>
+            <div className="p-6 rounded-[16px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
               <h4 className="text-lg font-semibold text-foreground mb-4">Product</h4>
               <ul className="space-y-3">
                 <li><a href="#how-it-works" className="text-foreground hover:text-primary transition-colors">How it works</a></li>
@@ -33,7 +41,7 @@ export const Footer = () => {
             </div>
 
             {/* Resources Column */}
-            <div>
+            <div className="p-6 rounded-[16px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
               <ul className="space-y-3">
                 <li><a href="/free-ai-tool" className="text-foreground hover:text-primary transition-colors">Free AI Tool</a></li>
@@ -43,7 +51,7 @@ export const Footer = () => {
             </div>
 
             {/* Info Column */}
-            <div>
+            <div className="p-6 rounded-[16px] border-[1.5px] border-blue-500/30 bg-white hover:bg-gray-50 transition-colors">
               <h4 className="text-lg font-semibold text-foreground mb-4">Info</h4>
               <ul className="space-y-3">
                 <li><a href="/contact-us" className="text-foreground hover:text-primary transition-colors">Contact Us</a></li>
@@ -55,8 +63,8 @@ export const Footer = () => {
         </div>
 
         {/* Copyright Notice */}
-        <div className="border-t border-border/50 mt-12 pt-8 text-center">
-          <p className="text-foreground text-sm">
+        <div className="border-t border-blue-500/30 mt-12 pt-8 text-center">
+          <p className="text-foreground text-sm leading-relaxed">
             © 2025 iValidate all rights reserved
           </p>
         </div>
