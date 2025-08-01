@@ -49,33 +49,21 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:slug" element={<BlogPost />} />
-            <Route path="/blogs/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
-            <Route path="/blogs/from-doubt-to-data" element={<FromDoubtToData />} />
-            <Route path="/blogs/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
+            <Route path="/blog" element={<Blogs />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/blog/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
+            <Route path="/blog/from-doubt-to-data" element={<FromDoubtToData />} />
+            <Route path="/blog/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/support/getting-started" element={<GettingStarted />} />
-            <Route path="/support/connect-workspace" element={<ConnectWorkspace />} />
-            <Route path="/support/ai-powered-validation" element={<AIPoweredValidation />} />
-            <Route path="/support/validation-reports" element={<ValidationReports />} />
-            <Route path="/support/managing-workflows" element={<ManagingWorkflows />} />
-            <Route path="/support/validation-score" element={<ValidationScore />} />
-            <Route path="/support/common-errors" element={<CommonErrors />} />
-            <Route path="/support/billing" element={<Billing />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/maintenance" element={<MaintenancePage />} />
-            <Route path="/free-ai-tool" element={<FreeAiTool />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </Suspense>
       </TooltipProvider>
     </QueryClientProvider>
   );
