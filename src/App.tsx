@@ -52,7 +52,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/blog" element={<Blogs />} />
+            <Route path="/blogs" element={<Blogs />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/blog/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
             <Route path="/blog/from-doubt-to-data" element={<FromDoubtToData />} />
