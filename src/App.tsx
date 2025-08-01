@@ -57,6 +57,7 @@ const App = () => {
             <Route path="/blog/how-ivalidate-helps-you-spot-a-bad-idea-fast" element={<HowIValidateHelpsYouSpotABadIdeaFast />} />
             <Route path="/blog/from-doubt-to-data" element={<FromDoubtToData />} />
             <Route path="/blog/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
+            <Route path="/free-ai-tool" element={<FreeAiTool />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />
