@@ -92,7 +92,7 @@ const DesktopCarousel = () => {
                                 key={activeIndex}
                                 src={activeUseCase.image}
                                 alt={activeUseCase.role}
-                                loading="lazy"
+                                loading={activeIndex === 0 ? "eager" : "lazy"}
                                 decoding="async"
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: 1, x: 0 }}
