@@ -13,7 +13,7 @@ const ValidationDemo = () => {
 
   const processingSteps = [
     { text: "Analyzing your idea...", icon: Lightbulb },
-    { text: "Scanning Reddit discussions...", icon: Users },
+    { text: "Scanning social media discussions...", icon: Users },
     { text: "Checking Google Trends...", icon: TrendingUp },
     { text: "Researching competitors...", icon: Target },
     { text: "Generating AI insights...", icon: CheckCircle }
@@ -40,7 +40,7 @@ const ValidationDemo = () => {
       confidence: 'High',
       marketDemand: {
         score: 78,
-        insight: "Strong demand signals found on Reddit",
+        insight: "Strong demand signals found across social platforms",
         painPoints: [
           "Manual inventory counting takes too much time",
           "Food costs are unpredictable and hard to track",

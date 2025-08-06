@@ -92,6 +92,8 @@ const DesktopCarousel = () => {
                                 key={activeIndex}
                                 src={activeUseCase.image}
                                 alt={activeUseCase.role}
+                                loading="lazy"
+                                decoding="async"
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 50 }}
@@ -140,6 +142,8 @@ const MobileCard = ({ useCase }: { useCase: any }) => (
                     src={useCase.image}
                     alt={useCase.role}
                     className="rounded-xl object-cover w-full h-auto shadow-lg"
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
             <div className="p-6 flex flex-col justify-center">
