@@ -27,6 +27,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const MaintenancePage = lazy(() => import("./pages/MaintenancePage"));
 const FreeAiTool = lazy(() => import("./pages/FreeAiTool"));
+const Demo = lazy(() => import("./pages/Demo"));
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,8 @@ const App = () => {
             <Route path="/blog/from-doubt-to-data" element={<FromDoubtToData />} />
             <Route path="/blog/how-i-found-my-first-validated-idea" element={<HowIFoundMyFirstValidatedIdea />} />
             <Route path="/free-ai-tool" element={<FreeAiTool />} />
+            <Route path="/demo" element={<Demo />} />
+            <Route path="/maintenance" element={<MaintenancePage />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/terms" element={<Terms />} />

@@ -130,9 +130,9 @@ export const HeroSection = () => {
 
           <div className="mt-8 sm:mt-10 flex items-center justify-center px-4">
             <Button 
-              className="h-10 px-4 text-white font-medium font-prompt flex items-center gap-1 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30"
+              className="h-12 px-6 text-white font-medium font-prompt flex items-center gap-2 bg-primary hover:bg-white hover:text-primary hover:border-[1.5px] hover:border-blue-500/30 text-base"
             >
-              <Link to="/maintenance">Start Validating Now</Link>
+              <Link to="/demo">🚀 Try Live Demo</Link>
             </Button>
           </div>
         </div>

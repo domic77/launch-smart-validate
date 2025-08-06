@@ -67,7 +67,22 @@ const FreeAiTool = () => {
         body: JSON.stringify({ idea }),
       });
 
-      const data = await response.json();
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        setError('Server returned invalid response. Please try again.');
+        console.error('Non-JSON response received:', await response.text());
+        return;
+      }
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        setError('Server returned malformed data. Please try again.');
+        console.error('JSON parsing error:', jsonError);
+        return;
+      }
 
       if (!response.ok) {
         setError(data.message || 'Failed to refine idea.');
@@ -77,8 +92,8 @@ const FreeAiTool = () => {
       setRefinedIdea(data);
       incrementUsage(); // Increment usage on successful refinement
     } catch (err) {
-      setError('An unexpected error occurred.');
-      console.error(err);
+      setError('Network error. Please check your connection and try again.');
+      console.error('Request error:', err);
     } finally {
       setIsLoading(false);
     }

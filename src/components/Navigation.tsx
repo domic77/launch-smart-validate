@@ -42,10 +42,8 @@ export const Navigation = () => {
   };
 
   const navigationItems = [
+    { label: "Demo", href: "/demo", type: "route" },
     { label: "How It Works", href: "/#how-it-works", type: "anchor" },
-    { label: "Why?", href: "/#why", type: "anchor" },
-    { label: "Use Cases", href: "/#use-cases", type: "anchor" },
-    { label: "Features", href: "/#features", type: "anchor" },
     { label: "Pricing", href: "/pricing", type: "route" },
   ];
   
@@ -172,7 +170,7 @@ export const Navigation = () => {
                       className="w-full text-foreground font-semibold py-2"
                       variant="ghost"
                     >
-                      <Link to="/maintenance">Start for Free</Link>
+                      <Link to="/maintenance">Validate Now</Link>
                     </Button>
                   </div>
                 </div>

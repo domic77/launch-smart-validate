@@ -19,7 +19,7 @@ export const ClosingCTA = () => {
           <CardContent>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" className="rounded-[16px] border-[1.5px] border-blue-500/30 bg-primary text-white hover:bg-white hover:text-primary transition-colors">
-                <Link to="/maintenance">Start Validating Now</Link>
+                <Link to="/demo">🚀 Try Live Demo</Link>
               </Button>
               <Button size="lg" variant="outline" className="rounded-[16px] border-[1.5px] border-blue-500/30 bg-white text-primary hover:bg-primary hover:text-white transition-colors">
                 <Link to="/free-ai-tool">Try Free AI Tool</Link>
