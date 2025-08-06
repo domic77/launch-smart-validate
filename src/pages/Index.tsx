@@ -7,9 +7,7 @@ import { FAQSection } from "@/components/FAQSection";
 import { TestimonialSection } from "@/components/TestimonialSection";
 import { Footer } from "@/components/Footer";
 import { ClosingCTA } from "@/components/ClosingCTA";
-import { lazy, Suspense } from "react";
-
-const UseCasesSection = lazy(() => import("@/components/UseCasesSection").then(module => ({ default: module.UseCasesSection })));
+import { UseCasesSection } from "@/components/UseCasesSection";
 
 const Index = () => {
   return (
@@ -18,9 +16,7 @@ const Index = () => {
       <HeroSection />
       <HowItWorksSection />
       <WhySection />
-      <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="text-lg text-gray-600">Loading use cases...</div></div>}>
-        <UseCasesSection />
-      </Suspense>
+      <UseCasesSection />
       <FeaturesSection />
       <TestimonialSection />
       <FAQSection />
