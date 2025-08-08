@@ -7,8 +7,20 @@ import { Button } from "@/components/ui/button";
 import { Rocket, Lightbulb, Zap, ShieldCheck, BarChart, Users, ArrowLeft, ArrowRight, User, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMobile } from '@/hooks/use-mobile';
+import type { ReactNode } from 'react';
 
-const useCases = [
+type UseCaseFeature = { icon: ReactNode; text: string };
+
+type UseCase = {
+  role: string;
+  heading: string;
+  text: string;
+  image: string;
+  icon: ReactNode;
+  features: UseCaseFeature[];
+};
+
+const useCases: UseCase[] = [
   {
     role: "Solo Founders / Indie Hackers",
     heading: "Validate Before You Build",
@@ -47,7 +59,7 @@ const useCases = [
   },
 ];
 
-const NavButton = ({ direction, useCase, onClick }: { direction: 'prev' | 'next', useCase: any, onClick: () => void }) => {
+const NavButton = ({ direction, useCase, onClick }: { direction: 'prev' | 'next', useCase: UseCase, onClick: () => void }) => {
     const isPrev = direction === 'prev';
     return (
         <Button
@@ -134,7 +146,7 @@ const DesktopCarousel = () => {
     );
 }
 
-const MobileCard = ({ useCase }: { useCase: any }) => (
+const MobileCard = ({ useCase }: { useCase: UseCase }) => (
     <Card className="w-full overflow-hidden rounded-[16px] border-[1.5px] border-blue-500/30 hover:bg-gray-50 transition-colors shadow-sm" style={{ backgroundColor: '#ffffff' }}>
         <CardContent className="p-0 flex flex-col items-stretch">
             <div className="p-6 bg-muted/20">

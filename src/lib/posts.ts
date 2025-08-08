@@ -15,6 +15,7 @@ export interface Post {
     href: string;
     imageUrl: string;
   };
+  readTime?: string;
 }
 
 export const posts: Post[] = [
