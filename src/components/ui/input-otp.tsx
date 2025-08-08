@@ -4,6 +4,9 @@ import { Dot } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+// Minimal context shape used locally
+type OTPContextShape = { slots: { char: string | null; hasFakeCaret: boolean; isActive: boolean }[] }
+
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
@@ -32,7 +35,7 @@ const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div"> & { index: number }
 >(({ index, className, ...props }, ref) => {
-  const inputOTPContext = React.useContext(OTPInputContext)
+  const inputOTPContext = React.useContext(OTPInputContext) as unknown as OTPContextShape
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
 
   return (
